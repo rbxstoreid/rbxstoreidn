@@ -16,7 +16,7 @@
 
 <main>
 
-    <!-- Robux -->
+    <!-- ROBUX -->
     <section class="game-card">
 
         <h2>🎮 Robux - Roblox</h2>
@@ -36,20 +36,24 @@
 
         <div id="customRobuxBox" style="display:none;">
             <label>Masukkan Jumlah Robux</label>
-            <input type="number" id="customRobux" placeholder="Contoh: 230">
+            <input
+                type="number"
+                id="customRobux"
+                min="1"
+                placeholder="Contoh: 230"
+            >
         </div>
 
         <h3 id="hargaRobux">Rp 9,000</h3>
 
-        <button id="waRobux">Beli Sekarang via WhatsApp</button>
-
-        <button id="customOrder">
-            Custom Pembelian
+        <button id="waRobux">
+            Beli Sekarang via WhatsApp
         </button>
 
     </section>
 
-    <!-- Grow A Garden -->
+
+    <!-- GROW A GARDEN -->
     <section class="game-card">
 
         <h2>🌱 Grow A Garden 2 - Roblox</h2>
@@ -72,15 +76,16 @@
             <option value="71000">Rainbow Carpet - Rp 71,000</option>
         </select>
 
-        <h3>Harga Akan Muncul Otomatis</h3>
+        <h3 id="hargaGarden">Rp 2,000</h3>
 
-        <button>Beli Sekarang via WhatsApp</button>
-
-        <button>Custom Pembelian</button>
+        <button id="waGarden">
+            Beli Sekarang via WhatsApp
+        </button>
 
     </section>
 
-    <!-- Toilet Tower Defense -->
+
+    <!-- TOILET TOWER DEFENSE -->
     <section class="game-card">
 
         <h2>🚽 Toilet Tower Defense - Roblox</h2>
@@ -94,15 +99,16 @@
             <option value="17000">1,000,000 Gems - Rp 17,000</option>
         </select>
 
-        <h3>Harga Akan Muncul Otomatis</h3>
+        <h3 id="hargaTTD">Rp 650</h3>
 
-        <button>Beli Sekarang via WhatsApp</button>
-
-        <button>Custom Pembelian</button>
+        <button id="waTTD">
+            Beli Sekarang via WhatsApp
+        </button>
 
     </section>
 
-    <!-- Mobile Legends -->
+
+    <!-- MOBILE LEGENDS -->
     <section class="game-card">
 
         <h2>💎 Mobile Legends</h2>
@@ -119,14 +125,41 @@
 
         <div id="customDiamondBox" style="display:none;">
             <label>Masukkan Jumlah Diamonds</label>
-            <input type="number" id="customDiamond" placeholder="Contoh: 725">
+            <input
+                type="number"
+                id="customDiamond"
+                min="1"
+                placeholder="Contoh: 725"
+            >
         </div>
 
-        <h3>Harga Akan Muncul Otomatis</h3>
+        <h3 id="hargaML">Rp 25,000</h3>
 
-        <button>Beli Sekarang via WhatsApp</button>
+        <button id="waML">
+            Beli Sekarang via WhatsApp
+        </button>
 
-        <button>Custom Pembelian</button>
+    </section>
+
+
+    <!-- CUSTOM PEMBELIAN -->
+    <section class="game-card custom-order-card">
+
+        <h2>Custom Pembelian</h2>
+
+        <p>
+            Tidak menemukan produk yang kamu cari?
+            Kamu dapat mengajukan pembelian item atau kebutuhan game online
+            lainnya melalui RBXSTORE.ID.
+        </p>
+
+        <p>
+            Hubungi kami untuk mengecek ketersediaan produk dan harga.
+        </p>
+
+        <button id="customOrder">
+            Ajukan Custom Pembelian via WhatsApp
+        </button>
 
     </section>
 
