@@ -734,3 +734,38 @@ body {
     background: #fff !important;
     -webkit-text-fill-color: #111 !important;
 }
+/* FIX TOP MENU MOBILE */
+
+.top-menu {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 12px !important;
+}
+
+.top-menu > button,
+.language-selector {
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+}
+
+.language-selector {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 4px !important;
+    padding: 8px 5px !important;
+}
+
+#languageSelect {
+    width: 100% !important;
+    min-width: 0 !important;
+    font-size: 12px !important;
+}
+
+.language-icon {
+    flex-shrink: 0;
+}
