@@ -4,29 +4,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>RBXSTORE.ID</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <!-- INTRO RBXSTORE.ID -->
-<div id="storeIntro">
-    <div class="intro-logo">
-        <span class="intro-rbx">RBXSTORE</span><span class="intro-id">.ID</span>
-    </div>
-</div>
 
-    <!-- HEADER -->
+    <!-- =========================
+         INTRO
+    ========================== -->
+
+    <div id="storeIntro">
+        <div class="intro-logo">
+            <span class="intro-rbx">RBXSTORE</span><span class="intro-id">.ID</span>
+        </div>
+    </div>
+
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
     <header>
         <h1>RBXSTORE.ID</h1>
         <p>Premium Game Store Indonesia</p>
     </header>
 
 
-    <!-- TOP MENU -->
+    <!-- =========================
+         TOP MENU
+    ========================== -->
+
     <nav class="top-menu">
-        <button id="openAbout">About Us</button>
-        <button id="openReport">Report an Issue</button>
+
+        <button id="openAbout">
+            About Us
+        </button>
+
+        <button id="openReport">
+            Report an Issue
+        </button>
+
+        <button id="shareStore">
+            Share Store
+        </button>
+
+        <div class="language-selector">
+
+            <span class="language-icon">🌐</span>
+
+            <select id="languageSelect">
+                <option value="id">Indonesia</option>
+                <option value="en">English</option>
+                <option value="fil">Filipino</option>
+                <option value="zh">中文</option>
+                <option value="es">Español</option>
+            </select>
+
+        </div>
+
     </nav>
 
 
@@ -42,9 +80,13 @@
                 ← Back to Store
             </button>
 
-            <p class="info-label">OUR STORY</p>
+            <p class="info-label">
+                OUR STORY
+            </p>
 
-            <h1>The Story Behind RBXSTORE.ID</h1>
+            <h1>
+                The Story Behind RBXSTORE.ID
+            </h1>
 
             <p>
                 RBXSTORE.ID began on July 30, 2025, from a simple idea
@@ -108,9 +150,13 @@
                 ← Back to Store
             </button>
 
-            <p class="info-label">CUSTOMER SUPPORT</p>
+            <p class="info-label">
+                CUSTOMER SUPPORT
+            </p>
 
-            <h1>Report an Issue</h1>
+            <h1>
+                Report an Issue
+            </h1>
 
             <p>
                 Experiencing an issue with RBXSTORE.ID?
@@ -120,48 +166,73 @@
 
             <form id="reportForm">
 
-    <input
-        type="hidden"
-        name="access_key"
-        value="6435d11f-b0f0-4771-8451-8ac3cc2f9ac1"
-    >
+                <input
+                    type="hidden"
+                    name="access_key"
+                    value="6435d11f-b0f0-4771-8451-8ac3cc2f9ac1"
+                >
 
-    <input
-        type="hidden"
-        name="subject"
-        value="New RBXSTORE.ID Issue Report"
-    >
+                <input
+                    type="hidden"
+                    name="subject"
+                    value="New RBXSTORE.ID Issue Report"
+                >
 
-    <label for="reportName">Name</label>
-    <input
-        type="text"
-        id="reportName"
-        name="name"
-        placeholder="Your name"
-        required
-    >
+                <label for="reportName">
+                    Name
+                </label>
 
-    <label for="reportCategory">Issue Category</label>
-    <select id="reportCategory" name="category" required>
-        <option value="Order Issue">Order Issue</option>
-        <option value="Product Issue">Product Issue</option>
-        <option value="Website Issue">Website Issue</option>
-        <option value="Other">Other</option>
-    </select>
+                <input
+                    type="text"
+                    id="reportName"
+                    name="name"
+                    placeholder="Your name"
+                    required
+                >
 
-    <label for="reportMessage">Describe the Issue</label>
-    <textarea
-        id="reportMessage"
-        name="message"
-        placeholder="Please describe the issue..."
-        required
-    ></textarea>
+                <label for="reportCategory">
+                    Issue Category
+                </label>
 
-    <button type="submit">
-        Submit Report
-    </button>
+                <select
+                    id="reportCategory"
+                    name="category"
+                    required
+                >
+                    <option value="Order Issue">
+                        Order Issue
+                    </option>
 
-</form>
+                    <option value="Product Issue">
+                        Product Issue
+                    </option>
+
+                    <option value="Website Issue">
+                        Website Issue
+                    </option>
+
+                    <option value="Other">
+                        Other
+                    </option>
+                </select>
+
+                <label for="reportMessage">
+                    Describe the Issue
+                </label>
+
+                <textarea
+                    id="reportMessage"
+                    name="message"
+                    placeholder="Please describe the issue..."
+                    required
+                ></textarea>
+
+                <button type="submit">
+                    Submit Report
+                </button>
+
+            </form>
+
             <p class="report-note">
                 Reports are sent privately to RBXSTORE.ID and do not
                 affect any public store rating.
@@ -185,22 +256,54 @@
 
             <h2>🎮 Robux - Roblox</h2>
 
-            <label>Pilih Nominal</label>
+            <label>
+                Pilih Nominal
+            </label>
 
             <select id="robux">
-                <option value="9000">50 Robux - Rp 9,000</option>
-                <option value="14000">80 Robux - Rp 14,000</option>
-                <option value="25000">150 Robux - Rp 25,000</option>
-                <option value="44000">300 Robux - Rp 44,000</option>
-                <option value="71000">500 Robux - Rp 71,000</option>
-                <option value="101000">750 Robux - Rp 101,000</option>
-                <option value="133000">1000 Robux - Rp 133,000</option>
-                <option value="custom">Custom Robux</option>
+
+                <option value="9000">
+                    50 Robux - Rp 9,000
+                </option>
+
+                <option value="14000">
+                    80 Robux - Rp 14,000
+                </option>
+
+                <option value="25000">
+                    150 Robux - Rp 25,000
+                </option>
+
+                <option value="44000">
+                    300 Robux - Rp 44,000
+                </option>
+
+                <option value="71000">
+                    500 Robux - Rp 71,000
+                </option>
+
+                <option value="101000">
+                    750 Robux - Rp 101,000
+                </option>
+
+                <option value="133000">
+                    1000 Robux - Rp 133,000
+                </option>
+
+                <option value="custom">
+                    Custom Robux
+                </option>
+
             </select>
 
-            <div id="customRobuxBox" style="display:none;">
+            <div
+                id="customRobuxBox"
+                style="display:none;"
+            >
 
-                <label>Masukkan Jumlah Robux</label>
+                <label>
+                    Masukkan Jumlah Robux
+                </label>
 
                 <input
                     type="number"
@@ -211,7 +314,9 @@
 
             </div>
 
-            <h3 id="hargaRobux">Rp 9,000</h3>
+            <h3 id="hargaRobux">
+                Rp 9,000
+            </h3>
 
             <button id="waRobux">
                 Beli Sekarang via WhatsApp
@@ -224,27 +329,73 @@
 
         <section class="game-card">
 
-            <h2>🌱 Grow A Garden 2 - Roblox</h2>
+            <h2>
+                🌱 Grow A Garden 2 - Roblox
+            </h2>
 
-            <label>Pilih Produk</label>
+            <label>
+                Pilih Produk
+            </label>
 
             <select id="garden">
-                <option value="2000">Golden Dragonfly Pet - Rp 2,000</option>
-                <option value="2000">Unicorn - Rp 2,000</option>
-                <option value="25500">Raccoon - Rp 25,500</option>
-                <option value="500">Bee - Rp 500</option>
-                <option value="200">10M Sheckles - Rp 200</option>
-                <option value="650">50M Sheckles - Rp 650</option>
-                <option value="3000">1B Sheckles - Rp 3,000</option>
-                <option value="22000">10B Sheckles - Rp 22,000</option>
-                <option value="155000">100B Sheckles - Rp 155,000</option>
-                <option value="63000">Vine Wrapper - Rp 63,000</option>
-                <option value="38000">Power Hose - Rp 38,000</option>
-                <option value="94000">Freeze Ray - Rp 94,000</option>
-                <option value="71000">Rainbow Carpet - Rp 71,000</option>
+
+                <option value="2000">
+                    Golden Dragonfly Pet - Rp 2,000
+                </option>
+
+                <option value="2000">
+                    Unicorn - Rp 2,000
+                </option>
+
+                <option value="25500">
+                    Raccoon - Rp 25,500
+                </option>
+
+                <option value="500">
+                    Bee - Rp 500
+                </option>
+
+                <option value="200">
+                    10M Sheckles - Rp 200
+                </option>
+
+                <option value="650">
+                    50M Sheckles - Rp 650
+                </option>
+
+                <option value="3000">
+                    1B Sheckles - Rp 3,000
+                </option>
+
+                <option value="22000">
+                    10B Sheckles - Rp 22,000
+                </option>
+
+                <option value="155000">
+                    100B Sheckles - Rp 155,000
+                </option>
+
+                <option value="63000">
+                    Vine Wrapper - Rp 63,000
+                </option>
+
+                <option value="38000">
+                    Power Hose - Rp 38,000
+                </option>
+
+                <option value="94000">
+                    Freeze Ray - Rp 94,000
+                </option>
+
+                <option value="71000">
+                    Rainbow Carpet - Rp 71,000
+                </option>
+
             </select>
 
-            <h3 id="hargaGarden">Rp 2,000</h3>
+            <h3 id="hargaGarden">
+                Rp 2,000
+            </h3>
 
             <button id="waGarden">
                 Beli Sekarang via WhatsApp
@@ -257,18 +408,37 @@
 
         <section class="game-card">
 
-            <h2>🚽 Toilet Tower Defense - Roblox</h2>
+            <h2>
+                🚽 Toilet Tower Defense - Roblox
+            </h2>
 
-            <label>Pilih Produk</label>
+            <label>
+                Pilih Produk
+            </label>
 
             <select id="ttd">
-                <option value="650">10,000 Gems - Rp 650</option>
-                <option value="3000">100,000 Gems - Rp 3,000</option>
-                <option value="10000">500,000 Gems - Rp 10,000</option>
-                <option value="17000">1,000,000 Gems - Rp 17,000</option>
+
+                <option value="650">
+                    10,000 Gems - Rp 650
+                </option>
+
+                <option value="3000">
+                    100,000 Gems - Rp 3,000
+                </option>
+
+                <option value="10000">
+                    500,000 Gems - Rp 10,000
+                </option>
+
+                <option value="17000">
+                    1,000,000 Gems - Rp 17,000
+                </option>
+
             </select>
 
-            <h3 id="hargaTTD">Rp 650</h3>
+            <h3 id="hargaTTD">
+                Rp 650
+            </h3>
 
             <button id="waTTD">
                 Beli Sekarang via WhatsApp
@@ -281,21 +451,46 @@
 
         <section class="game-card">
 
-            <h2>💎 Mobile Legends</h2>
+            <h2>
+                💎 Mobile Legends
+            </h2>
 
-            <label>Pilih Diamond</label>
+            <label>
+                Pilih Diamond
+            </label>
 
             <select id="ml">
-                <option value="25000">100 Diamonds - Rp 25,000</option>
-                <option value="60000">300 Diamonds - Rp 60,000</option>
-                <option value="85000">500 Diamonds - Rp 85,000</option>
-                <option value="160000">1,000 Diamonds - Rp 160,000</option>
-                <option value="custom">Custom Diamonds</option>
+
+                <option value="25000">
+                    100 Diamonds - Rp 25,000
+                </option>
+
+                <option value="60000">
+                    300 Diamonds - Rp 60,000
+                </option>
+
+                <option value="85000">
+                    500 Diamonds - Rp 85,000
+                </option>
+
+                <option value="160000">
+                    1,000 Diamonds - Rp 160,000
+                </option>
+
+                <option value="custom">
+                    Custom Diamonds
+                </option>
+
             </select>
 
-            <div id="customDiamondBox" style="display:none;">
+            <div
+                id="customDiamondBox"
+                style="display:none;"
+            >
 
-                <label>Masukkan Jumlah Diamonds</label>
+                <label>
+                    Masukkan Jumlah Diamonds
+                </label>
 
                 <input
                     type="number"
@@ -306,7 +501,9 @@
 
             </div>
 
-            <h3 id="hargaML">Rp 25,000</h3>
+            <h3 id="hargaML">
+                Rp 25,000
+            </h3>
 
             <button id="waML">
                 Beli Sekarang via WhatsApp
@@ -314,115 +511,224 @@
 
         </section>
 
-<!-- 99 NIGHTS IN THE FOREST -->
 
-<section class="game-card">
+        <!-- 99 NIGHTS IN THE FOREST -->
 
-    <h2>🌲 99 Nights in the Forest - Roblox</h2>
+        <section class="game-card">
 
-    <label>Pilih Diamonds</label>
+            <h2>
+                🌲 99 Nights in the Forest - Roblox
+            </h2>
 
-    <select id="forest">
-        <option value="15000">20 Diamonds - Rp 15,000</option>
-        <option value="45000">100 Diamonds - Rp 45,000</option>
-        <option value="99000">250 Diamonds - Rp 99,000</option>
-        <option value="269000">700 Diamonds - Rp 269,000</option>
-    </select>
+            <label>
+                Pilih Diamonds
+            </label>
 
-    <h3 id="hargaForest">Rp 15,000</h3>
+            <select id="forest">
 
-    <button id="waForest">
-        Beli Sekarang via WhatsApp
-    </button>
+                <option value="15000">
+                    20 Diamonds - Rp 15,000
+                </option>
 
-</section>
+                <option value="45000">
+                    100 Diamonds - Rp 45,000
+                </option>
 
+                <option value="99000">
+                    250 Diamonds - Rp 99,000
+                </option>
 
-<!-- FC MOBILE -->
+                <option value="269000">
+                    700 Diamonds - Rp 269,000
+                </option>
 
-<section class="game-card">
+            </select>
 
-    <h2>⚽ FC Mobile</h2>
+            <h3 id="hargaForest">
+                Rp 15,000
+            </h3>
 
-    <label>Pilih FC Points</label>
+            <button id="waForest">
+                Beli Sekarang via WhatsApp
+            </button>
 
-    <select id="fcMobile">
-        <optgroup label="FC Points">
-            <option value="6000">40 FC Points - Rp 6,000</option>
-            <option value="15000">100 FC Points - Rp 15,000</option>
-            <option value="74000">520 FC Points - Rp 74,000</option>
-            <option value="149000">1,070 FC Points - Rp 149,000</option>
-            <option value="305000">2,200 FC Points - Rp 305,000</option>
-            <option value="749000">5,750 FC Points - Rp 749,000</option>
-        </optgroup>
-
-        <optgroup label="Silver FC Points">
-            <option value="6000">39 Silver FC Points - Rp 6,000</option>
-            <option value="15000">99 Silver FC Points - Rp 15,000</option>
-            <option value="73000">499 Silver FC Points - Rp 73,000</option>
-            <option value="148000">999 Silver FC Points - Rp 148,000</option>
-            <option value="309000">1,999 Silver FC Points - Rp 309,000</option>
-            <option value="749000">4,999 Silver FC Points - Rp 749,000</option>
-        </optgroup>
-    </select>
-
-    <h3 id="hargaFC">Rp 6,000</h3>
-
-    <button id="waFC">
-        Beli Sekarang via WhatsApp
-    </button>
-
-</section>
+        </section>
 
 
-<!-- FREE FIRE -->
+        <!-- FC MOBILE -->
 
-<section class="game-card">
+        <section class="game-card">
 
-    <h2>🔥 Free Fire</h2>
+            <h2>
+                ⚽ FC Mobile
+            </h2>
 
-    <label>Pilih Diamonds</label>
+            <label>
+                Pilih FC Points
+            </label>
 
-    <select id="freeFire">
-        <option value="10000">70 Diamonds - Rp 10,000</option>
-        <option value="14000">100 Diamonds - Rp 14,000</option>
-        <option value="27000">200 Diamonds - Rp 27,000</option>
-        <option value="42000">310 Diamonds - Rp 42,000</option>
-        <option value="67000">520 Diamonds - Rp 67,000</option>
-        <option value="90000">740 Diamonds - Rp 90,000</option>
-        <option value="130000">1,060 Diamonds - Rp 130,000</option>
-        <option value="custom">Custom Diamonds</option>
-    </select>
+            <select id="fcMobile">
 
-    <div id="customFFBox" style="display:none;">
-        <label>Masukkan Jumlah Diamonds</label>
+                <optgroup label="FC Points">
 
-        <input
-            type="number"
-            id="customFF"
-            min="1"
-            placeholder="Contoh: 850"
-        >
-    </div>
+                    <option value="6000">
+                        40 FC Points - Rp 6,000
+                    </option>
 
-    <h3 id="hargaFF">Rp 10,000</h3>
+                    <option value="15000">
+                        100 FC Points - Rp 15,000
+                    </option>
 
-    <button id="waFF">
-        Beli Sekarang via WhatsApp
-    </button>
+                    <option value="74000">
+                        520 FC Points - Rp 74,000
+                    </option>
 
-</section>
+                    <option value="149000">
+                        1,070 FC Points - Rp 149,000
+                    </option>
 
-        <!-- CUSTOM PEMBELIAN -->
+                    <option value="305000">
+                        2,200 FC Points - Rp 305,000
+                    </option>
+
+                    <option value="749000">
+                        5,750 FC Points - Rp 749,000
+                    </option>
+
+                </optgroup>
+
+                <optgroup label="Silver FC Points">
+
+                    <option value="6000">
+                        39 Silver FC Points - Rp 6,000
+                    </option>
+
+                    <option value="15000">
+                        99 Silver FC Points - Rp 15,000
+                    </option>
+
+                    <option value="73000">
+                        499 Silver FC Points - Rp 73,000
+                    </option>
+
+                    <option value="148000">
+                        999 Silver FC Points - Rp 148,000
+                    </option>
+
+                    <option value="309000">
+                        1,999 Silver FC Points - Rp 309,000
+                    </option>
+
+                    <option value="749000">
+                        4,999 Silver FC Points - Rp 749,000
+                    </option>
+
+                </optgroup>
+
+            </select>
+
+            <h3 id="hargaFC">
+                Rp 6,000
+            </h3>
+
+            <button id="waFC">
+                Beli Sekarang via WhatsApp
+            </button>
+
+        </section>
+
+
+        <!-- FREE FIRE -->
+
+        <section class="game-card">
+
+            <h2>
+                🔥 Free Fire
+            </h2>
+
+            <label>
+                Pilih Diamonds
+            </label>
+
+            <select id="freeFire">
+
+                <option value="10000">
+                    70 Diamonds - Rp 10,000
+                </option>
+
+                <option value="14000">
+                    100 Diamonds - Rp 14,000
+                </option>
+
+                <option value="27000">
+                    200 Diamonds - Rp 27,000
+                </option>
+
+                <option value="42000">
+                    310 Diamonds - Rp 42,000
+                </option>
+
+                <option value="67000">
+                    520 Diamonds - Rp 67,000
+                </option>
+
+                <option value="90000">
+                    740 Diamonds - Rp 90,000
+                </option>
+
+                <option value="130000">
+                    1,060 Diamonds - Rp 130,000
+                </option>
+
+                <option value="custom">
+                    Custom Diamonds
+                </option>
+
+            </select>
+
+            <div
+                id="customFFBox"
+                style="display:none;"
+            >
+
+                <label>
+                    Masukkan Jumlah Diamonds
+                </label>
+
+                <input
+                    type="number"
+                    id="customFF"
+                    min="1"
+                    placeholder="Contoh: 850"
+                >
+
+            </div>
+
+            <h3 id="hargaFF">
+                Rp 10,000
+            </h3>
+
+            <button id="waFF">
+                Beli Sekarang via WhatsApp
+            </button>
+
+        </section>
+
+
+        <!-- =========================
+             CUSTOM PEMBELIAN
+        ========================== -->
 
         <section class="game-card custom-order-card">
 
-            <h2>Custom Pembelian</h2>
+            <h2>
+                Custom Pembelian
+            </h2>
 
             <p>
                 Tidak menemukan produk yang kamu cari?
-                Kamu dapat mengajukan pembelian item atau kebutuhan game online
-                lainnya melalui RBXSTORE.ID.
+                Kamu dapat mengajukan pembelian item atau kebutuhan
+                game online lainnya melalui RBXSTORE.ID.
             </p>
 
             <p>
@@ -434,74 +740,352 @@
             </button>
 
         </section>
+
+
         <!-- =========================
-     CUSTOM ORDER PAGE
-========================== -->
+             CUSTOM ORDER PAGE
+        ========================== -->
 
-<section id="customOrderPage" class="info-page">
+        <section
+            id="customOrderPage"
+            class="info-page"
+        >
 
-    <div class="info-content">
+            <div class="info-content">
 
-        <button id="closeCustomOrder" class="back-button">
-            ← Back to Store
-        </button>
-
-        <p class="info-label">CUSTOM ORDER</p>
-
-        <h1>Custom Pembelian</h1>
-
-        <p>
-            Pilih game dan masukkan produk atau item yang ingin dibeli.
-            Ketersediaan dan harga akan dikonfirmasi melalui WhatsApp.
-        </p>
-
-        <form id="customOrderForm">
-
-            <label for="customGame">Pilih Game</label>
-
-            <select id="customGame" required>
-                <option value="" disabled selected>Pilih game</option>
-                <option value="Murder Mystery 2">Murder Mystery 2</option>
-                <option value="Brookhaven">Brookhaven</option>
-                <option value="Car Driving Indonesia">Car Driving Indonesia</option>
-                <option value="Blox Fruits">Blox Fruits</option>
-                <option value="Steal a Brainrot">Steal a Brainrot</option>
-                <option value="Keyboard Escape">Keyboard Escape</option>
-                <option value="Other">Other</option>
-            </select>
-
-            <div id="otherGameBox" style="display:none;">
-                <label for="otherGame">Nama Game</label>
-
-                <input
-                    type="text"
-                    id="otherGame"
-                    placeholder="Masukkan nama game"
+                <button
+                    id="closeCustomOrder"
+                    class="back-button"
                 >
+                    ← Back to Store
+                </button>
+
+                <p class="info-label">
+                    CUSTOM ORDER
+                </p>
+
+                <h1>
+                    Custom Pembelian
+                </h1>
+
+                <p>
+                    Pilih game dan masukkan produk atau item yang ingin dibeli.
+                    Ketersediaan dan harga akan dikonfirmasi melalui WhatsApp.
+                </p>
+
+                <form id="customOrderForm">
+
+                    <label for="customGame">
+                        Pilih Game
+                    </label>
+
+                    <select
+                        id="customGame"
+                        required
+                    >
+
+                        <option
+                            value=""
+                            disabled
+                            selected
+                        >
+                            Pilih game
+                        </option>
+
+                        <option value="Murder Mystery 2">
+                            Murder Mystery 2
+                        </option>
+
+                        <option value="Brookhaven">
+                            Brookhaven
+                        </option>
+
+                        <option value="Car Driving Indonesia">
+                            Car Driving Indonesia
+                        </option>
+
+                        <option value="Blox Fruits">
+                            Blox Fruits
+                        </option>
+
+                        <option value="Steal a Brainrot">
+                            Steal a Brainrot
+                        </option>
+
+                        <option value="Keyboard Escape">
+                            Keyboard Escape
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                    <div
+                        id="otherGameBox"
+                        style="display:none;"
+                    >
+
+                        <label for="otherGame">
+                            Nama Game
+                        </label>
+
+                        <input
+                            type="text"
+                            id="otherGame"
+                            placeholder="Masukkan nama game"
+                        >
+
+                    </div>
+
+                    <label for="customItem">
+                        Nama Pesanan
+                    </label>
+
+                    <input
+                        type="text"
+                        id="customItem"
+                        placeholder="Masukkan nama produk atau item"
+                        required
+                    >
+
+                    <button type="submit">
+                        Continue via WhatsApp
+                    </button>
+
+                </form>
+
             </div>
 
-            <label for="customItem">Nama Pesanan</label>
+        </section>
 
-            <input
-                type="text"
-                id="customItem"
-                placeholder="Masukkan nama produk atau item"
-                required
-            >
 
-            <button type="submit">
-                Continue via WhatsApp
-            </button>
+        <!-- =========================
+             HOW TO ORDER
+        ========================== -->
 
-        </form>
+        <section class="how-to-order">
 
-    </div>
+            <p class="how-label">
+                HOW TO ORDER
+            </p>
 
-</section>
+            <h2>
+                Simple & Easy Ordering
+            </h2>
+
+            <div class="order-steps">
+
+                <div class="order-step">
+
+                    <span>01</span>
+
+                    <h3>
+                        Choose Your Product
+                    </h3>
+
+                    <p>
+                        Select the game, item, or amount you want to purchase.
+                    </p>
+
+                </div>
+
+                <div class="order-step">
+
+                    <span>02</span>
+
+                    <h3>
+                        Order via WhatsApp
+                    </h3>
+
+                    <p>
+                        Tap the WhatsApp button and your order details
+                        will be prepared automatically.
+                    </p>
+
+                </div>
+
+                <div class="order-step">
+
+                    <span>03</span>
+
+                    <h3>
+                        Complete Payment
+                    </h3>
+
+                    <p>
+                        Follow the payment instructions provided by RBXSTORE.ID.
+                    </p>
+
+                </div>
+
+                <div class="order-step">
+
+                    <span>04</span>
+
+                    <h3>
+                        Order Processed
+                    </h3>
+
+                    <p>
+                        After payment is confirmed,
+                        your order will be processed.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             FAQ
+        ========================== -->
+
+        <section class="faq-section">
+
+            <p class="faq-label">
+                FAQ
+            </p>
+
+            <h2>
+                Frequently Asked Questions
+            </h2>
+
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+                    How long does an order take?
+                    <span>+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        Processing time depends on the product
+                        and current availability.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+                    How do I place an order?
+                    <span>+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        Choose a product, select the amount,
+                        then tap the Buy via WhatsApp button
+                        to continue your order.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+                    What payment methods are available?
+                    <span>+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        Available payment methods will be provided
+                        through WhatsApp when you place an order.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+                    What if the product I want isn't listed?
+                    <span>+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        Use Custom Pembelian, select your game,
+                        and enter the product or item you are looking for.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+                    What should I do if I have an issue with my order?
+                    <span>+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        Use Report an Issue or contact RBXSTORE.ID
+                        through WhatsApp for assistance.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+                    Can prices change?
+                    <span>+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        Yes. Prices may change depending on
+                        product availability and market conditions.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
 
     </main>
 
 
+    <!-- JAVASCRIPT -->
+<!-- ORDER CONFIRMATION -->
+
+<div id="orderConfirm" class="order-confirm-overlay">
+
+    <div class="order-confirm-box">
+
+        <p class="confirm-label">ORDER CONFIRMATION</p>
+        <h2 id="confirmTitle">Confirm Your Order</h2>
+
+        <div class="confirm-details">
+            <p><span id="confirmGameLabel">Game</span>: <strong id="confirmGame"></strong></p>
+            <p><span id="confirmProductLabel">Product</span>: <strong id="confirmProduct"></strong></p>
+            <p><span id="confirmPriceLabel">Price</span>: <strong id="confirmPrice"></strong></p>
+        </div>
+
+        <div class="confirm-buttons">
+            <button id="cancelOrder">Cancel</button>
+            <button id="continueOrder">Continue to WhatsApp</button>
+        </div>
+
+    </div>
+
+</div>
     <script src="script.js"></script>
 
 </body>

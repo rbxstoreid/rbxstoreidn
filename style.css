@@ -308,7 +308,10 @@ button {
     position: fixed;
     inset: 0;
     width: 100%;
-    height: 100vh;
+    height: 100dvh;
+    min-height: 100vh;
+    bottom: 0;
+    overflow: hidden;
     background: #ffffff;
     z-index: 99999;
 
@@ -345,4 +348,360 @@ button {
 
 #storeIntro.intro-exit {
     transform: translateX(-100%);
+}
+/* ===============================
+   PRODUCT SCROLL ANIMATION
+================================ */
+
+.game-card {
+    opacity: 0;
+    transform: translateY(35px);
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s ease;
+}
+
+.game-card.card-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* ===============================
+   PREMIUM STORE BACKGROUND
+================================ */
+
+body {
+    background:
+        radial-gradient(
+            circle at 10% 15%,
+            rgba(255, 122, 0, 0.10),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 55%,
+            rgba(212, 175, 55, 0.10),
+            transparent 32%
+        ),
+        linear-gradient(
+            135deg,
+            #ffffff 0%,
+            #fffaf3 50%,
+            #f8f8f8 100%
+        );
+
+    background-attachment: fixed;
+}
+
+/* Biar kartu terlihat sedikit lebih premium */
+.game-card {
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+/* ===============================
+   HOW TO ORDER
+================================ */
+
+.how-to-order {
+    width: 92%;
+    max-width: 850px;
+    margin: 70px auto 50px;
+    padding: 35px;
+    box-sizing: border-box;
+
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(255, 122, 0, 0.18);
+    border-radius: 20px;
+
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.06);
+}
+
+.how-label {
+    color: #ff7a00;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.how-to-order > h2 {
+    color: #111;
+    font-size: 30px;
+    margin: 8px 0 30px;
+}
+
+.order-steps {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.order-step {
+    padding: 20px;
+    border-radius: 14px;
+    background: #fafafa;
+}
+
+.order-step span {
+    color: #ff7a00;
+    font-size: 13px;
+    font-weight: 900;
+}
+
+.order-step h3 {
+    color: #111;
+    margin: 8px 0;
+}
+
+.order-step p {
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+}
+
+@media (max-width: 600px) {
+    .how-to-order {
+        padding: 25px 20px;
+    }
+
+    .order-steps {
+        grid-template-columns: 1fr;
+    }
+
+    .how-to-order > h2 {
+        font-size: 26px;
+    }
+}
+/* ===============================
+   FAQ
+================================ */
+
+.faq-section {
+    width: 92%;
+    max-width: 850px;
+    margin: 40px auto 70px;
+    padding: 35px;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid rgba(255, 122, 0, 0.18);
+    border-radius: 20px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.06);
+}
+
+.faq-label {
+    color: #ff7a00;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.faq-section > h2 {
+    color: #111;
+    font-size: 30px;
+    margin: 8px 0 25px;
+}
+
+.faq-item {
+    border-bottom: 1px solid #eeeeee;
+}
+
+.faq-question {
+    width: 100%;
+    padding: 20px 0;
+    margin: 0;
+    background: transparent;
+    color: #111;
+    border: none;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    text-align: left;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.faq-question span {
+    color: #ff7a00;
+    font-size: 24px;
+    margin-left: 15px;
+    transition: transform 0.3s ease;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition:
+        max-height 0.4s ease,
+        opacity 0.3s ease;
+}
+
+.faq-answer p {
+    color: #666;
+    line-height: 1.7;
+    padding: 0 0 20px;
+    margin: 0;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 250px;
+    opacity: 1;
+}
+
+.faq-item.active .faq-question span {
+    transform: rotate(45deg);
+}
+
+@media (max-width: 600px) {
+    .faq-section {
+        padding: 25px 20px;
+    }
+
+    .faq-section > h2 {
+        font-size: 26px;
+    }
+}
+/* ===============================
+   LANGUAGE SELECTOR
+================================ */
+
+.language-selector {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    background: #111;
+    padding: 9px 12px;
+    border-radius: 10px;
+}
+
+.language-icon {
+    font-size: 17px;
+}
+
+#languageSelect {
+    background: transparent;
+    color: #fff;
+    border: none;
+    outline: none;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+#languageSelect option {
+    background: #fff;
+    color: #111;
+}
+/* ===============================
+   ORDER CONFIRMATION
+================================ */
+
+.order-confirm-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+    box-sizing: border-box;
+
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.order-confirm-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.order-confirm-box {
+    width: 100%;
+    max-width: 430px;
+
+    padding: 28px;
+    box-sizing: border-box;
+
+    background: #fff;
+    border-radius: 20px;
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+
+    transform: translateY(25px) scale(0.97);
+    transition: transform 0.3s ease;
+}
+
+.order-confirm-overlay.active .order-confirm-box {
+    transform: translateY(0) scale(1);
+}
+
+.confirm-label {
+    margin: 0 0 6px;
+
+    color: #ff7a00;
+
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.order-confirm-box h2 {
+    margin: 0 0 22px;
+    color: #111;
+}
+
+.confirm-details {
+    padding: 17px;
+
+    background: #f7f7f7;
+    border-radius: 13px;
+}
+
+.confirm-details p {
+    margin: 8px 0;
+    color: #555;
+}
+
+.confirm-details strong {
+    color: #111;
+}
+
+.confirm-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 10px;
+
+    margin-top: 20px;
+}
+
+.confirm-buttons button {
+    padding: 13px 10px;
+
+    border: none;
+    border-radius: 10px;
+
+    font-weight: 700;
+    cursor: pointer;
+}
+
+#cancelOrder {
+    background: #eeeeee;
+    color: #111;
+}
+
+#continueOrder {
+    background: #ff7a00;
+    color: #fff;
 }
