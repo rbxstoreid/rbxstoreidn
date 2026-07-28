@@ -1,375 +1,31 @@
+/* =========================================================
+   RBXSTORE.ID
+   MAIN STYLESHEET
+========================================================= */
+
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
 * {
     box-sizing: border-box;
 }
 
+html {
+    width: 100%;
+    overflow-x: hidden;
+}
+
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f5f5f5;
-    color: #111;
-}
-
-header {
-    background: #111;
-    color: white;
-    text-align: center;
-    padding: 35px 20px;
-    border-bottom: 5px solid #d4af37;
-}
-
-header h1 {
-    margin: 0;
-    color: #d4af37;
-    font-size: 36px;
-}
-
-header p {
-    margin: 10px 0 0;
-    color: #eee;
-}
-
-main {
-    width: 92%;
-    max-width: 850px;
-    margin: 35px auto;
-}
-
-.game-card {
-    background: white;
-    border-radius: 18px;
-    padding: 25px;
-    margin-bottom: 25px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-    border: 1px solid #eee;
-}
-
-.game-card h2 {
-    margin-top: 0;
-    font-size: 24px;
-}
-
-.game-card h3 {
-    margin: 20px 0;
-    color: #111;
-}
-
-label {
-    display: block;
-    margin: 15px 0 8px;
-    font-weight: bold;
-}
-
-select,
-input {
     width: 100%;
-    padding: 14px;
-    font-size: 16px;
-    border: 2px solid #d4af37;
-    border-radius: 10px;
-    background: white;
-    outline: none;
-}
-
-select:focus,
-input:focus {
-    border-color: #ff7a00;
-}
-
-button {
-    width: 100%;
-    padding: 15px;
-    border: none;
-    border-radius: 10px;
-    font-size: 16px;
-    cursor: pointer;
-    font-weight: bold;
-    margin-top: 10px;
-    transition: 0.2s;
-}
-
-/* Tombol pertama di setiap produk = WhatsApp */
-
-.game-card button:first-of-type {
-    background: #ff7a00;
-    color: white;
-}
-
-.game-card button:first-of-type:hover {
-    background: #e66d00;
-    transform: scale(1.02);
-}
-
-/* Tombol kedua = Custom Pembelian */
-
-.game-card button:nth-of-type(2) {
-    background: #111;
-    color: #d4af37;
-}
-
-.game-card button:nth-of-type(2):hover {
-    background: #292929;
-    transform: scale(1.02);
-}
-
-#customRobuxBox,
-#customDiamondBox {
-    margin-top: 15px;
-}
-
-@media (max-width: 600px) {
-    header h1 {
-        font-size: 29px;
-    }
-
-    main {
-        width: 94%;
-        margin-top: 20px;
-    }
-
-    .game-card {
-        padding: 19px;
-    }
-
-    .game-card h2 {
-        font-size: 21px;
-    }
-}
-/* ===============================
-   TOP NAVIGATION
-================================ */
-
-.top-menu {
-    max-width: 850px;
-    width: 92%;
-    margin: 22px auto 0;
-    display: flex;
-    gap: 10px;
-}
-
-.top-menu button {
-    background: #111;
-    color: #d4af37;
-    border: 1px solid #d4af37;
-    margin: 0;
-}
-
-.top-menu button:hover {
-    background: #d4af37;
-    color: #111;
-}
-
-
-/* ===============================
-   ABOUT US PAGE
-================================ */
-
-.info-page {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100vh;
-    background: #f5f5f5;
-    z-index: 1000;
-
-    transform: translateX(100%);
-    transition: transform 0.45s ease;
-
-    overflow-y: auto;
-}
-
-.info-page.active {
-    transform: translateX(0);
-}
-
-.info-content {
-    max-width: 750px;
-    margin: auto;
-    padding: 50px 25px 80px;
-}
-
-.info-label {
-    color: #d4af37;
-    font-weight: bold;
-    letter-spacing: 3px;
-    margin-top: 45px;
-}
-
-.info-content h1 {
-    font-size: 38px;
-    margin: 10px 0 30px;
-    color: #111;
-}
-
-.info-content p {
-    font-size: 17px;
-    line-height: 1.8;
-    color: #444;
-}
-
-.back-button {
-    width: auto;
-    background: #111;
-    color: #d4af37;
-    padding: 12px 20px;
-}
-
-.about-date {
-    margin-top: 35px;
-    padding-top: 20px;
-    border-top: 1px solid #ddd;
-    font-weight: bold;
-    color: #111 !important;
-}
-
-@media (max-width: 600px) {
-    .info-content h1 {
-        font-size: 30px;
-    }
-
-    .top-menu {
-        width: 94%;
-    }
-}
-/* ===============================
-   REPORT AN ISSUE
-================================ */
-
-#reportForm {
-    margin-top: 30px;
-}
-
-#reportForm label {
-    display: block;
-    margin-top: 20px;
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: #111;
-}
-
-#reportForm input,
-#reportForm select,
-#reportForm textarea {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 14px;
-    border: 1px solid #d4af37;
-    border-radius: 10px;
-    background: white;
-    font-family: inherit;
-    font-size: 16px;
-    outline: none;
-}
-
-#reportForm input:focus,
-#reportForm select:focus,
-#reportForm textarea:focus {
-    border-color: #ff7a00;
-}
-
-#reportForm textarea {
-    min-height: 150px;
-    resize: vertical;
-}
-
-#reportForm button {
-    width: 100%;
-    margin-top: 22px;
-    background: #ff7a00;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    padding: 15px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.report-note {
-    margin-top: 25px;
-    font-size: 14px !important;
-    color: #777 !important;
-}
-/* CUSTOM ORDER WHATSAPP BUTTON */
-
-#customOrderForm button[type="submit"] {
-    background: #111;
-    color: #fff;
-}
-
-#customOrderForm button[type="submit"]:hover {
-    background: #292929;
-    color: #fff;
-}
-/* ===============================
-   RBXSTORE.ID INTRO
-================================ */
-
-#storeIntro {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100dvh;
     min-height: 100vh;
-    bottom: 0;
-    overflow: hidden;
-    background: #ffffff;
-    z-index: 99999;
+    overflow-x: hidden;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    font-family: Arial, sans-serif;
+    color: #111;
 
-    transition: transform 0.8s cubic-bezier(0.77, 0, 0.18, 1);
-}
-
-.intro-logo {
-    font-size: clamp(36px, 8vw, 72px);
-    font-weight: 900;
-    letter-spacing: -2px;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
-
-.intro-rbx {
-    color: #ff7a00;
-}
-
-.intro-id {
-    color: #111111;
-}
-
-.intro-logo.show {
-    opacity: 1;
-}
-
-.intro-logo.hide {
-    opacity: 0;
-}
-
-#storeIntro.intro-exit {
-    transform: translateX(-100%);
-}
-/* ===============================
-   PRODUCT SCROLL ANIMATION
-================================ */
-
-.game-card {
-    opacity: 0;
-    transform: translateY(35px);
-    transition:
-        opacity 0.6s ease,
-        transform 0.6s ease;
-}
-
-.game-card.card-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-/* ===============================
-   PREMIUM STORE BACKGROUND
-================================ */
-
-body {
     background:
         radial-gradient(
             circle at 10% 15%,
@@ -391,24 +47,585 @@ body {
     background-attachment: fixed;
 }
 
-/* Biar kartu terlihat sedikit lebih premium */
-.game-card {
-    background: rgba(255, 255, 255, 0.94);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-}
-/* ===============================
-   HOW TO ORDER
-================================ */
 
-.how-to-order {
+/* =========================================================
+   HEADER
+========================================================= */
+
+header {
+    width: 100%;
+
+    background: #111;
+    color: #fff;
+
+    text-align: center;
+
+    padding: 35px 20px;
+
+    border-bottom: 5px solid #d4af37;
+}
+
+header h1 {
+    margin: 0;
+
+    color: #d4af37;
+
+    font-size: 36px;
+    font-weight: 800;
+}
+
+header p {
+    margin: 10px 0 0;
+
+    color: #eee;
+}
+
+
+/* =========================================================
+   GENERAL BUTTON
+========================================================= */
+
+button {
+    width: 100%;
+
+    padding: 15px;
+
+    border: none;
+    border-radius: 10px;
+
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+/* =========================================================
+   GENERAL FORM ELEMENTS
+========================================================= */
+
+label {
+    display: block;
+
+    margin: 15px 0 8px;
+
+    font-weight: bold;
+}
+
+select,
+input {
+    width: 100%;
+
+    padding: 14px;
+
+    font-family: inherit;
+    font-size: 16px;
+
+    border: 2px solid #d4af37;
+    border-radius: 10px;
+
+    background: #fff;
+    color: #111;
+
+    outline: none;
+}
+
+select:focus,
+input:focus {
+    border-color: #ff7a00;
+}
+
+
+/* =========================================================
+   TOP NAVIGATION
+========================================================= */
+
+.top-menu {
     width: 92%;
     max-width: 850px;
+
+    margin: 22px auto 0;
+
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(150px, 1.15fr);
+
+    gap: 10px;
+}
+
+.top-menu > button {
+    width: 100%;
+    min-width: 0;
+
+    margin: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 13px 8px;
+
+    background: #111;
+    color: #d4af37;
+
+    border: 1px solid #d4af37;
+
+    text-align: center;
+
+    line-height: 1.25;
+}
+
+.top-menu > button:hover {
+    background: #d4af37;
+    color: #111;
+}
+
+
+/* =========================================================
+   LANGUAGE SELECTOR
+========================================================= */
+
+.language-selector {
+    width: 100%;
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    padding: 8px 10px;
+
+    background: #111;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+}
+
+.language-icon {
+    flex: 0 0 auto;
+
+    font-size: 18px;
+    line-height: 1;
+}
+
+#languageSelect {
+    width: 100%;
+    min-width: 0;
+
+    padding: 7px 2px;
+
+    background: #111;
+
+    color: #fff;
+    -webkit-text-fill-color: #fff;
+
+    border: none;
+    border-radius: 0;
+
+    outline: none;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+#languageSelect:focus {
+    border: none;
+}
+
+#languageSelect option {
+    background: #fff;
+
+    color: #111;
+    -webkit-text-fill-color: #111;
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+
+main {
+    width: 92%;
+    max-width: 850px;
+
+    margin: 35px auto;
+}
+
+
+/* =========================================================
+   PRODUCT CARDS
+========================================================= */
+
+.game-card {
+    width: 100%;
+
+    margin-bottom: 25px;
+    padding: 25px;
+
+    background: rgba(255, 255, 255, 0.94);
+
+    border: 1px solid #eee;
+    border-radius: 18px;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    opacity: 0;
+
+    transform: translateY(35px);
+
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s ease,
+        box-shadow 0.2s ease;
+}
+
+.game-card.card-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.game-card h2 {
+    margin-top: 0;
+
+    font-size: 24px;
+}
+
+.game-card h3 {
+    margin: 20px 0;
+
+    color: #111;
+}
+
+
+/* =========================================================
+   PRODUCT BUTTONS
+========================================================= */
+
+.game-card button {
+    margin-top: 10px;
+}
+
+.game-card button:first-of-type {
+    background: #ff7a00;
+    color: #fff;
+}
+
+.game-card button:first-of-type:hover {
+    background: #e66d00;
+    transform: scale(1.02);
+}
+
+.game-card button:nth-of-type(2) {
+    background: #111;
+    color: #d4af37;
+}
+
+.game-card button:nth-of-type(2):hover {
+    background: #292929;
+    transform: scale(1.02);
+}
+
+
+/* =========================================================
+   CUSTOM INPUT BOXES
+========================================================= */
+
+#customRobuxBox,
+#customDiamondBox,
+#customFFBox {
+    margin-top: 15px;
+}
+
+
+/* =========================================================
+   INFO PAGES
+   ABOUT / REPORT / CUSTOM ORDER
+========================================================= */
+
+.info-page {
+    position: fixed;
+
+    top: 0;
+    right: 0;
+
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+
+    background: #f5f5f5;
+
+    z-index: 1000;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    transform: translateX(100%);
+
+    transition: transform 0.45s ease;
+}
+
+.info-page.active {
+    transform: translateX(0);
+}
+
+.info-content {
+    width: 100%;
+    max-width: 750px;
+
+    margin: auto;
+
+    padding: 50px 25px 80px;
+}
+
+.info-label {
+    margin-top: 45px;
+
+    color: #d4af37;
+
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.info-content h1 {
+    margin: 10px 0 30px;
+
+    color: #111;
+
+    font-size: 38px;
+}
+
+.info-content p {
+    color: #444;
+
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   BACK BUTTON
+========================================================= */
+
+.back-button {
+    width: auto;
+
+    margin-top: 0;
+
+    padding: 12px 20px;
+
+    background: #111;
+    color: #d4af37;
+}
+
+.back-button:hover {
+    background: #292929;
+}
+
+
+/* =========================================================
+   ABOUT PAGE
+========================================================= */
+
+.about-date {
+    margin-top: 35px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid #ddd;
+
+    color: #111 !important;
+
+    font-weight: bold;
+}
+
+
+/* =========================================================
+   REPORT FORM
+========================================================= */
+
+#reportForm {
+    margin-top: 30px;
+}
+
+#reportForm label {
+    display: block;
+
+    margin-top: 20px;
+    margin-bottom: 8px;
+
+    color: #111;
+
+    font-weight: 600;
+}
+
+#reportForm input,
+#reportForm select,
+#reportForm textarea {
+    width: 100%;
+
+    padding: 14px;
+
+    background: #fff;
+
+    border: 1px solid #d4af37;
+    border-radius: 10px;
+
+    font-family: inherit;
+    font-size: 16px;
+
+    outline: none;
+}
+
+#reportForm input:focus,
+#reportForm select:focus,
+#reportForm textarea:focus {
+    border-color: #ff7a00;
+}
+
+#reportForm textarea {
+    min-height: 150px;
+
+    resize: vertical;
+}
+
+#reportForm button {
+    width: 100%;
+
+    margin-top: 22px;
+
+    padding: 15px;
+
+    background: #ff7a00;
+    color: #fff;
+
+    border: none;
+    border-radius: 10px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+#reportForm button:hover {
+    background: #e66d00;
+}
+
+.report-note {
+    margin-top: 25px;
+
+    color: #777 !important;
+
+    font-size: 14px !important;
+}
+
+
+/* =========================================================
+   CUSTOM ORDER FORM
+========================================================= */
+
+#customOrderForm button[type="submit"] {
+    margin-top: 20px;
+
+    background: #111;
+    color: #fff;
+}
+
+#customOrderForm button[type="submit"]:hover {
+    background: #292929;
+    color: #fff;
+}
+
+
+/* =========================================================
+   RBXSTORE.ID INTRO
+========================================================= */
+
+#storeIntro {
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+
+    overflow: hidden;
+
+    background: #fff;
+
+    z-index: 99999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition:
+        transform 0.8s cubic-bezier(0.77, 0, 0.18, 1);
+}
+
+.intro-logo {
+    padding: 0 15px;
+
+    opacity: 0;
+
+    font-size: clamp(36px, 8vw, 72px);
+    font-weight: 900;
+
+    letter-spacing: -2px;
+
+    text-align: center;
+
+    transition: opacity 0.5s ease;
+}
+
+.intro-rbx {
+    color: #ff7a00;
+}
+
+.intro-id {
+    color: #111;
+}
+
+.intro-logo.show {
+    opacity: 1;
+}
+
+.intro-logo.hide {
+    opacity: 0;
+}
+
+#storeIntro.intro-exit {
+    transform: translateX(-100%);
+}
+
+
+/* =========================================================
+   HOW TO ORDER
+========================================================= */
+
+.how-to-order {
+    width: 100%;
+
     margin: 70px auto 50px;
+
     padding: 35px;
-    box-sizing: border-box;
 
     background: rgba(255, 255, 255, 0.92);
+
     border: 1px solid rgba(255, 122, 0, 0.18);
     border-radius: 20px;
 
@@ -416,136 +633,166 @@ body {
 }
 
 .how-label {
+    margin-top: 0;
+
     color: #ff7a00;
+
     font-size: 13px;
     font-weight: 800;
+
     letter-spacing: 2px;
 }
 
 .how-to-order > h2 {
-    color: #111;
-    font-size: 30px;
     margin: 8px 0 30px;
+
+    color: #111;
+
+    font-size: 30px;
 }
 
 .order-steps {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
     gap: 16px;
 }
 
 .order-step {
+    min-width: 0;
+
     padding: 20px;
-    border-radius: 14px;
+
     background: #fafafa;
+
+    border-radius: 14px;
 }
 
 .order-step span {
     color: #ff7a00;
+
     font-size: 13px;
     font-weight: 900;
 }
 
 .order-step h3 {
-    color: #111;
     margin: 8px 0;
+
+    color: #111;
 }
 
 .order-step p {
-    color: #666;
-    line-height: 1.6;
     margin: 0;
+
+    color: #666;
+
+    line-height: 1.6;
 }
 
-@media (max-width: 600px) {
-    .how-to-order {
-        padding: 25px 20px;
-    }
 
-    .order-steps {
-        grid-template-columns: 1fr;
-    }
-
-    .how-to-order > h2 {
-        font-size: 26px;
-    }
-}
-/* ===============================
+/* =========================================================
    FAQ
-================================ */
+========================================================= */
 
 .faq-section {
-    width: 92%;
-    max-width: 850px;
+    width: 100%;
+
     margin: 40px auto 70px;
+
     padding: 35px;
-    box-sizing: border-box;
+
     background: rgba(255, 255, 255, 0.94);
+
     border: 1px solid rgba(255, 122, 0, 0.18);
     border-radius: 20px;
+
     box-shadow: 0 12px 35px rgba(0, 0, 0, 0.06);
 }
 
 .faq-label {
+    margin-top: 0;
+
     color: #ff7a00;
+
     font-size: 13px;
     font-weight: 800;
+
     letter-spacing: 2px;
 }
 
 .faq-section > h2 {
-    color: #111;
-    font-size: 30px;
     margin: 8px 0 25px;
+
+    color: #111;
+
+    font-size: 30px;
 }
 
 .faq-item {
-    border-bottom: 1px solid #eeeeee;
+    border-bottom: 1px solid #eee;
 }
 
 .faq-question {
     width: 100%;
-    padding: 20px 0;
+
     margin: 0;
-    background: transparent;
-    color: #111;
-    border: none;
+    padding: 20px 0;
 
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+
+    background: transparent;
+    color: #111;
+
+    border: none;
 
     text-align: left;
+
     font-size: 16px;
     font-weight: 700;
+
     cursor: pointer;
 }
 
 .faq-question span {
-    color: #ff7a00;
-    font-size: 24px;
+    flex-shrink: 0;
+
     margin-left: 15px;
+
+    color: #ff7a00;
+
+    font-size: 24px;
+
     transition: transform 0.3s ease;
 }
 
 .faq-answer {
     max-height: 0;
+
     overflow: hidden;
+
     opacity: 0;
+
     transition:
         max-height 0.4s ease,
         opacity 0.3s ease;
 }
 
 .faq-answer p {
-    color: #666;
-    line-height: 1.7;
-    padding: 0 0 20px;
     margin: 0;
+
+    padding: 0 0 20px;
+
+    color: #666;
+
+    line-height: 1.7;
 }
 
 .faq-item.active .faq-answer {
-    max-height: 250px;
+    max-height: 300px;
+
     opacity: 1;
 }
 
@@ -553,73 +800,35 @@ body {
     transform: rotate(45deg);
 }
 
-@media (max-width: 600px) {
-    .faq-section {
-        padding: 25px 20px;
-    }
 
-    .faq-section > h2 {
-        font-size: 26px;
-    }
-}
-/* ===============================
-   LANGUAGE SELECTOR
-================================ */
-
-.language-selector {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-
-    background: #111;
-    padding: 9px 12px;
-    border-radius: 10px;
-}
-
-.language-icon {
-    font-size: 17px;
-}
-
-#languageSelect {
-    background: transparent;
-    color: #fff;
-    border: none;
-    outline: none;
-
-    font-family: inherit;
-    font-size: 14px;
-    font-weight: 700;
-    cursor: pointer;
-}
-
-#languageSelect option {
-    background: #fff;
-    color: #111;
-}
-/* ===============================
+/* =========================================================
    ORDER CONFIRMATION
-================================ */
+========================================================= */
 
 .order-confirm-overlay {
     position: fixed;
+
     inset: 0;
+
     z-index: 99999;
 
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
     padding: 20px;
-    box-sizing: border-box;
 
     background: rgba(0, 0, 0, 0.45);
+
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
 
     opacity: 0;
     visibility: hidden;
 
-    transition: opacity 0.25s ease, visibility 0.25s ease;
+    transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease;
 }
 
 .order-confirm-overlay.active {
@@ -632,14 +841,15 @@ body {
     max-width: 430px;
 
     padding: 28px;
-    box-sizing: border-box;
 
     background: #fff;
+
     border-radius: 20px;
 
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
 
     transform: translateY(25px) scale(0.97);
+
     transition: transform 0.3s ease;
 }
 
@@ -654,11 +864,13 @@ body {
 
     font-size: 12px;
     font-weight: 800;
+
     letter-spacing: 1.5px;
 }
 
 .order-confirm-box h2 {
     margin: 0 0 22px;
+
     color: #111;
 }
 
@@ -666,11 +878,13 @@ body {
     padding: 17px;
 
     background: #f7f7f7;
+
     border-radius: 13px;
 }
 
 .confirm-details p {
     margin: 8px 0;
+
     color: #555;
 }
 
@@ -680,92 +894,301 @@ body {
 
 .confirm-buttons {
     display: grid;
+
     grid-template-columns: 1fr 1.5fr;
+
     gap: 10px;
 
     margin-top: 20px;
 }
 
 .confirm-buttons button {
+    margin: 0;
+
     padding: 13px 10px;
 
     border: none;
     border-radius: 10px;
 
     font-weight: 700;
+
     cursor: pointer;
 }
 
 #cancelOrder {
-    background: #eeeeee;
+    background: #eee;
     color: #111;
+}
+
+#cancelOrder:hover {
+    background: #ddd;
 }
 
 #continueOrder {
     background: #ff7a00;
     color: #fff;
 }
-/* FIX LANGUAGE SELECTOR MOBILE */
 
-.language-selector {
-    min-width: 125px;
-    justify-content: center;
+#continueOrder:hover {
+    background: #e66d00;
 }
 
-#languageSelect {
-    display: block !important;
-    width: auto !important;
-    min-width: 85px !important;
 
-    background: #111 !important;
-    color: #ffffff !important;
+/* =========================================================
+   TABLET
+========================================================= */
 
-    -webkit-text-fill-color: #ffffff !important;
+@media (max-width: 800px) {
 
-    border: none !important;
-    padding: 8px 4px !important;
+    .top-menu {
+        width: 94%;
 
-    font-size: 14px !important;
-    font-weight: 700 !important;
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr))
+            minmax(145px, 1.15fr);
+
+        gap: 8px;
+    }
+
+    .top-menu > button {
+        padding-left: 5px;
+        padding-right: 5px;
+
+        font-size: 14px;
+    }
+
+    main {
+        width: 94%;
+    }
 }
 
-#languageSelect option {
-    color: #111 !important;
-    background: #fff !important;
-    -webkit-text-fill-color: #111 !important;
-}
-/* FIX TOP MENU MOBILE */
 
-.top-menu {
-    display: grid !important;
-    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-    gap: 8px !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-    padding: 12px !important;
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    body {
+        background-attachment: scroll;
+    }
+
+
+    /* HEADER */
+
+    header {
+        padding: 30px 15px;
+    }
+
+    header h1 {
+        font-size: 29px;
+    }
+
+    header p {
+        font-size: 15px;
+    }
+
+
+    /* TOP MENU */
+
+    .top-menu {
+        width: 94%;
+
+        margin: 16px auto 0;
+
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+
+        gap: 7px;
+    }
+
+    .top-menu > button {
+        width: 100%;
+        min-width: 0;
+
+        height: 62px;
+
+        padding: 7px 4px;
+
+        font-size: 12px;
+        line-height: 1.2;
+
+        white-space: normal;
+
+        overflow-wrap: normal;
+        word-break: normal;
+    }
+
+
+    /* LANGUAGE ON ITS OWN ROW */
+
+    .language-selector {
+        grid-column: 1 / -1;
+
+        width: 100%;
+        min-width: 0;
+
+        height: 52px;
+
+        padding: 7px 14px;
+
+        gap: 8px;
+
+        justify-content: center;
+
+        overflow: hidden;
+    }
+
+    .language-icon {
+        font-size: 19px;
+    }
+
+    #languageSelect {
+        flex: 0 1 auto;
+
+        width: auto;
+        min-width: 135px;
+        max-width: 220px;
+
+        padding: 6px 8px;
+
+        font-size: 14px;
+
+        text-align: center;
+    }
+
+
+    /* MAIN */
+
+    main {
+        width: 94%;
+
+        margin-top: 20px;
+    }
+
+
+    /* PRODUCT CARDS */
+
+    .game-card {
+        padding: 19px;
+
+        border-radius: 16px;
+    }
+
+    .game-card h2 {
+        font-size: 21px;
+    }
+
+    .game-card h3 {
+        font-size: 20px;
+    }
+
+    .game-card select,
+    .game-card input {
+        font-size: 16px;
+    }
+
+
+    /* INFO PAGES */
+
+    .info-content {
+        padding: 30px 20px 70px;
+    }
+
+    .info-content h1 {
+        font-size: 30px;
+    }
+
+    .info-content p {
+        font-size: 16px;
+    }
+
+    .info-label {
+        margin-top: 35px;
+    }
+
+
+    /* HOW TO ORDER */
+
+    .how-to-order {
+        margin-top: 50px;
+
+        padding: 25px 20px;
+    }
+
+    .how-to-order > h2 {
+        font-size: 26px;
+    }
+
+    .order-steps {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* FAQ */
+
+    .faq-section {
+        padding: 25px 20px;
+    }
+
+    .faq-section > h2 {
+        font-size: 26px;
+    }
+
+
+    /* CONFIRMATION */
+
+    .order-confirm-box {
+        padding: 22px;
+    }
+
+    .confirm-buttons {
+        grid-template-columns: 1fr;
+    }
 }
 
-.top-menu > button,
-.language-selector {
-    width: 100% !important;
-    min-width: 0 !important;
-    box-sizing: border-box !important;
-}
 
-.language-selector {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 4px !important;
-    padding: 8px 5px !important;
-}
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
 
-#languageSelect {
-    width: 100% !important;
-    min-width: 0 !important;
-    font-size: 12px !important;
-}
+@media (max-width: 380px) {
 
-.language-icon {
-    flex-shrink: 0;
+    header h1 {
+        font-size: 26px;
+    }
+
+    .top-menu {
+        gap: 5px;
+    }
+
+    .top-menu > button {
+        height: 60px;
+
+        padding: 6px 2px;
+
+        font-size: 11px;
+    }
+
+    .language-selector {
+        height: 50px;
+    }
+
+    #languageSelect {
+        min-width: 120px;
+
+        font-size: 13px;
+    }
+
+    .game-card {
+        padding: 16px;
+    }
+
+    .game-card h2 {
+        font-size: 19px;
+    }
+
+    .info-content {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
 }
