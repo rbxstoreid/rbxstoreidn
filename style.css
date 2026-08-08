@@ -1192,3 +1192,387 @@ main {
         padding-right: 16px;
     }
 }
+/* ===============================
+   SHOPPING CART
+================================ */
+ 
+.cart-button {
+    width: 92%;
+    max-width: 850px;
+
+    display: block;
+
+    margin: 10px auto 0; /* lebih dekat ke atas */
+
+    padding: 10px 14px; /* lebih kecil */
+
+    font-size: 14px; /* tulisan lebih kecil */
+
+    background: #111;
+    color: #d4af37;
+
+    border: 1px solid #d4af37;
+
+    font-weight: 800;
+}
+
+.cart-button:hover {
+    background: #d4af37;
+    color: #111;
+}
+
+#cartCount {
+    display: inline-flex;
+
+    min-width: 22px;
+    height: 22px;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-left: 5px;
+
+    background: #ff7a00;
+    color: white;
+
+    border-radius: 50%;
+
+    font-size: 12px;
+}
+
+.cart-overlay {
+    position: fixed;
+    inset: 0;
+
+    z-index: 99998;
+
+    display: flex;
+    justify-content: flex-end;
+
+    background: rgba(0,0,0,.45);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: .3s ease;
+}
+
+.cart-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.cart-box {
+    width: 100%;
+    max-width: 430px;
+    height: 100%;
+
+    padding: 30px;
+
+    background: white;
+
+    overflow-y: auto;
+
+    transform: translateX(100%);
+    transition: transform .35s ease;
+}
+
+.cart-overlay.active .cart-box {
+    transform: translateX(0);
+}
+
+.cart-close {
+    width: auto;
+
+    margin: 0 0 20px;
+
+    padding: 4px 12px;
+
+    background: transparent;
+    color: #111;
+
+    font-size: 30px;
+}
+
+.cart-label {
+    margin: 0;
+
+    color: #ff7a00;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+.cart-box h2 {
+    margin-top: 5px;
+}
+
+.cart-item {
+    padding: 15px 0;
+
+    border-bottom: 1px solid #eee;
+}
+
+.cart-item strong {
+    display: block;
+
+    margin-bottom: 5px;
+}
+
+.cart-item small {
+    color: #777;
+}
+
+.cart-remove {
+    width: auto;
+
+    margin-top: 8px;
+    padding: 6px 10px;
+
+    background: #eee;
+    color: #111;
+
+    font-size: 12px;
+}
+
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 25px;
+    padding-top: 18px;
+
+    border-top: 2px solid #111;
+
+    font-size: 18px;
+}
+
+#checkoutCart {
+    margin-top: 20px;
+
+    background: #ff7a00;
+    color: white;
+}
+
+@media (max-width: 600px) {
+
+    .cart-button {
+        width: 94%;
+    }
+
+    .cart-box {
+        max-width: none;
+
+        padding: 25px 20px;
+    }
+}
+/* ===============================
+   WELCOME POPUP
+================================ */
+
+.welcome-overlay {
+    position: fixed;
+    inset: 0;
+
+    z-index: 100000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(0, 0, 0, 0.5);
+
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+}
+
+.welcome-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.welcome-box {
+    position: relative;
+
+    width: 100%;
+    max-width: 430px;
+
+    padding: 32px 28px;
+
+    background: #fff;
+
+    border-radius: 20px;
+
+    text-align: center;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.2);
+
+    transform: translateY(20px) scale(0.97);
+
+    transition: transform 0.3s ease;
+}
+
+.welcome-overlay.active .welcome-box {
+    transform: translateY(0) scale(1);
+}
+
+.welcome-close {
+    position: absolute;
+
+    top: 10px;
+    right: 12px;
+
+    width: auto;
+
+    margin: 0;
+    padding: 3px 10px;
+
+    background: transparent;
+    color: #777;
+
+    font-size: 27px;
+}
+
+.welcome-close:hover {
+    background: transparent;
+    color: #111;
+}
+
+.welcome-label {
+    margin: 0 0 8px;
+
+    color: #ff7a00;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+.welcome-box h2 {
+    margin: 0 0 12px;
+
+    color: #111;
+
+    font-size: 27px;
+}
+
+.welcome-box > p {
+    margin: 0;
+
+    color: #666;
+
+    line-height: 1.6;
+}
+
+.welcome-promo {
+    display: flex;
+    flex-direction: column;
+
+    gap: 6px;
+
+    margin: 22px 0;
+
+    padding: 17px;
+
+    background: #fff8ef;
+
+    border: 1px solid rgba(255, 122, 0, 0.2);
+    border-radius: 13px;
+
+    text-align: left;
+}
+
+.welcome-promo strong {
+    color: #ff7a00;
+}
+
+.welcome-promo span {
+    color: #555;
+
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+#welcomeContinue {
+    margin-top: 0;
+
+    background: #ff7a00;
+    color: #fff;
+}
+
+#welcomeContinue:hover {
+    background: #e66d00;
+}
+/* ===============================
+   FLOATING WHATSAPP
+================================ */
+
+#floatingWhatsApp {
+    position: fixed;
+
+    right: 18px;
+    bottom: 18px;
+
+    z-index: 9990;
+
+    width: 58px;
+    height: 58px;
+
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #25d366;
+    color: white;
+
+    border: none;
+    border-radius: 50%;
+
+    box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+
+    cursor: pointer;
+
+    transition: transform 0.2s ease;
+}
+
+.whatsapp-icon {
+    width: 30px;
+    height: 30px;
+
+    fill: white;
+}
+
+#floatingWhatsApp:hover {
+    transform: scale(1.08);
+}
+
+@media (max-width: 600px) {
+    #floatingWhatsApp {
+        width: 54px;
+        height: 54px;
+
+        right: 14px;
+        bottom: 14px;
+    }
+
+    .whatsapp-icon {
+        width: 28px;
+        height: 28px;
+    }
+}

@@ -18,6 +18,26 @@ function formatHarga(angka) {
 let pendingWhatsAppURL = "";
 
 function bukaWhatsApp(pesan) {
+    // Diskon 10% untuk pembelian di atas Rp30.000
+    const matchHarga = pesan.match(/Harga:\s*Rp\s*([\d,.]+)/);
+
+    if (matchHarga) {
+        const harga = Number(
+            matchHarga[1].replace(/[.,]/g, "")
+        );
+
+        if (harga >= 31000) {
+            const diskon = Math.round(harga * 0.10);
+            const total = harga - diskon;
+
+            pesan = pesan.replace(
+                /Harga:\s*Rp\s*[\d,.]+/,
+                `Price: Rp ${harga.toLocaleString("id-ID")}
+Discount: -10% (Rp ${diskon.toLocaleString("id-ID")})
+Total: Rp ${total.toLocaleString("id-ID")}`
+            );
+        }
+    }
 
     pendingWhatsAppURL =
         "https://wa.me/" +
@@ -1349,3 +1369,326 @@ const savedLanguage =
 languageSelect.value = savedLanguage;
 
 changeLanguage(savedLanguage);
+// ===============================
+// SHOPPING CART
+// ===============================
+
+let cart = JSON.parse(
+    localStorage.getItem("rbxCart") || "[]"
+);
+
+const openCart = document.getElementById("openCart");
+const closeCart = document.getElementById("closeCart");
+const cartPanel = document.getElementById("cartPanel");
+const cartItems = document.getElementById("cartItems");
+const cartCount = document.getElementById("cartCount");
+const cartTotal = document.getElementById("cartTotal");
+const checkoutCart = document.getElementById("checkoutCart");
+
+function formatCartPrice(price) {
+    return "Rp " + Number(price).toLocaleString("en-US");
+}
+
+function saveCart() {
+    localStorage.setItem(
+        "rbxCart",
+        JSON.stringify(cart)
+    );
+}
+function renderCart() {
+
+    cartItems.innerHTML = "";
+
+    let subtotal = 0;
+
+    cart.forEach((item, index) => {
+
+        subtotal += Number(item.price);
+
+        const div = document.createElement("div");
+
+        div.className = "cart-item";
+
+        div.innerHTML = `
+            <strong>${item.product}</strong>
+            <small>${item.order}</small>
+            <br>
+            <small>${formatCartPrice(item.price)}</small>
+
+            <button
+                class="cart-remove"
+                onclick="removeCartItem(${index})">
+                Remove
+            </button>
+        `;
+
+        cartItems.appendChild(div);
+    });
+
+    if (cart.length === 0) {
+        cartItems.innerHTML =
+            "<p>Your cart is empty.</p>";
+    }
+
+    const discount =
+        subtotal >= 31000
+            ? Math.round(subtotal * 0.10)
+            : 0;
+
+    const total =
+        subtotal - discount;
+
+    const oldSummary =
+        document.getElementById("cartPriceSummary");
+
+    if (oldSummary) {
+        oldSummary.remove();
+    }
+
+    const summary =
+        document.createElement("div");
+
+    summary.id = "cartPriceSummary";
+
+    if (discount > 0) {
+
+        summary.innerHTML = `
+            <div class="cart-price-row">
+                <span>Price</span>
+                <strong>${formatCartPrice(subtotal)}</strong>
+            </div>
+
+            <div class="cart-price-row discount-row">
+                <span>Discount</span>
+                <strong>-10% (${formatCartPrice(discount)})</strong>
+            </div>
+
+            <div class="cart-price-total">
+                <span>Total</span>
+                <strong>${formatCartPrice(total)}</strong>
+            </div>
+        `;
+
+    } else {
+
+        summary.innerHTML = `
+            <div class="cart-price-total">
+                <span>Total</span>
+                <strong>${formatCartPrice(total)}</strong>
+            </div>
+        `;
+    }
+
+    const checkoutButton =
+        document.getElementById("checkoutCart");
+
+    checkoutButton.parentNode.insertBefore(
+        summary,
+        checkoutButton
+    );
+
+    cartCount.textContent = cart.length;
+}
+
+function addToCart(product, order, price) {
+
+    cart.push({
+        product: product,
+        order: order,
+        price: Number(price)
+    });
+
+    saveCart();
+    renderCart();
+
+    alert("Added to cart!");
+}
+
+function removeCartItem(index) {
+
+    cart.splice(index, 1);
+
+    saveCart();
+    renderCart();
+}
+
+openCart.addEventListener("click", function () {
+
+    cartPanel.classList.add("active");
+
+    document.body.style.overflow = "hidden";
+});
+
+closeCart.addEventListener("click", function () {
+
+    cartPanel.classList.remove("active");
+
+    document.body.style.overflow = "";
+});
+
+checkoutCart.addEventListener("click", function () {
+
+    if (cart.length === 0) {
+
+        alert("Your cart is empty.");
+
+        return;
+    }
+
+    let total = 0;
+
+    let daftarPesanan = "";
+
+    cart.forEach((item, index) => {
+
+        total += Number(item.price);
+
+        daftarPesanan +=
+`${index + 1}. ${item.product}
+   Pesanan: ${item.order}
+   Harga: ${formatCartPrice(item.price)}
+
+`;
+    });
+
+    const pesan =
+`Halo RBXSTORE.ID.
+
+Saya ingin memesan beberapa produk:
+
+${daftarPesanan}
+Total: ${formatCartPrice(total)}
+
+Mohon diproses pesanannya. Terima kasih.`;
+
+    bukaWhatsApp(pesan);
+});
+
+renderCart();
+// ===============================
+// ADD TO CART BUTTONS
+// ===============================
+
+document.querySelectorAll(".game-card").forEach(function (card) {
+
+    const select = card.querySelector("select");
+
+    // Hanya produk yang punya select
+    if (!select) return;
+
+    const buyButton = card.querySelector("button");
+
+    if (!buyButton) return;
+
+    const addButton = document.createElement("button");
+
+    addButton.textContent = "🛒 Add to Cart";
+
+    addButton.style.background = "#111";
+    addButton.style.color = "#d4af37";
+
+    addButton.addEventListener("click", function () {
+
+        const option =
+            select.options[select.selectedIndex];
+
+        const order =
+            option.text.split(" - Rp")[0];
+
+        const price =
+            Number(select.value);
+
+        const product =
+            card.querySelector("h2").textContent.trim();
+
+        addToCart(
+            product,
+            order,
+            price
+        );
+    });
+
+    // Masukkan sebelum tombol WhatsApp
+    buyButton.parentNode.insertBefore(
+        addButton,
+        buyButton
+    );
+});
+// ===============================
+// WELCOME POPUP
+// AFTER INTRO - ONCE ONLY
+// ===============================
+
+const welcomePopup = document.getElementById("welcomePopup");
+const closeWelcome = document.getElementById("closeWelcome");
+const welcomeContinue = document.getElementById("welcomeContinue");
+
+const welcomeKey = "rbxstore_welcome_v2";
+
+function showWelcomePopup() {
+
+    if (!welcomePopup) return;
+
+    if (localStorage.getItem(welcomeKey) === "shown") {
+        return;
+    }
+
+    welcomePopup.classList.add("active");
+}
+
+function closeWelcomePopup() {
+
+    if (!welcomePopup) return;
+
+    welcomePopup.classList.remove("active");
+
+    localStorage.setItem(welcomeKey, "shown");
+}
+
+if (closeWelcome) {
+    closeWelcome.addEventListener(
+        "click",
+        closeWelcomePopup
+    );
+}
+
+if (welcomeContinue) {
+    welcomeContinue.addEventListener(
+        "click",
+        closeWelcomePopup
+    );
+}
+
+
+// Tunggu intro selesai dulu
+window.addEventListener("load", function () {
+
+    setTimeout(function () {
+        showWelcomePopup();
+    }, 4600);
+
+});
+// ===============================
+// FLOATING WHATSAPP
+// ===============================
+
+const floatingWhatsApp =
+    document.getElementById("floatingWhatsApp");
+
+if (floatingWhatsApp) {
+
+    floatingWhatsApp.addEventListener("click", function () {
+
+    const pesan =
+        "Halo RBXSTORE.ID. Saya ingin bertanya mengenai produk.";
+
+    const url =
+        "https://wa.me/" +
+        nomorWA +
+        "?text=" +
+        encodeURIComponent(pesan);
+
+    window.open(url, "_blank");
+
+});
+}

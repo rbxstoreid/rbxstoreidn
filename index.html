@@ -248,6 +248,35 @@
     ========================== -->
 
     <main>
+        <!-- CART BUTTON -->
+
+<button id="openCart" class="cart-button">
+    🛒 Cart <span id="cartCount">0</span>
+</button>
+
+<!-- CART PANEL -->
+
+<div id="cartPanel" class="cart-overlay">
+
+    <div class="cart-box">
+
+        <button id="closeCart" class="cart-close">
+            ×
+        </button>
+
+        <p class="cart-label">YOUR CART</p>
+
+        <h2>Shopping Cart</h2>
+
+        <div id="cartItems"></div>
+
+        <button id="checkoutCart">
+            Checkout via WhatsApp
+        </button>
+
+    </div>
+
+</div>
 
 
         <!-- ROBUX -->
@@ -1086,6 +1115,42 @@
     </div>
 
 </div>
+<!-- WELCOME POPUP -->
+
+<div id="welcomePopup" class="welcome-overlay">
+
+    <div class="welcome-box">
+
+        <button id="closeWelcome" class="welcome-close">×</button>
+
+        <p class="welcome-label">RBXSTORE.ID</p>
+
+        <h2>Welcome to RBXSTORE.ID</h2>
+
+        <p>
+            Nikmati pengalaman berbelanja produk game digital
+            dengan mudah, cepat, dan praktis.
+        </p>
+
+        <div class="welcome-promo">
+            <strong>🎁 Special Offer</strong>
+            <span>Belanja di atas Rp30.000 dan dapatkan diskon 10%.</span>
+        </div>
+
+        <button id="welcomeContinue">
+            Continue to Store
+        </button>
+
+    </div>
+
+</div>
+<!-- FLOATING WHATSAPP -->
+
+<button id="floatingWhatsApp" aria-label="Contact RBXSTORE.ID">
+    <svg class="whatsapp-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.6 0 .4 5.2.4 11.7c0 2.1.5 4.1 1.6 5.9L.3 24l6.6-1.7c1.8 1 3.4 1.5 5.2 1.5h.1c6.4 0 11.7-5.2 11.7-11.7 0-3.1-1.2-6.3-3.4-8.6zM12.1 21.8c-1.6 0-3.2-.4-4.6-1.3l-.3-.2-3.9 1 1-3.8-.2-.3a9.9 9.9 0 1 1 8 4.6zm5.4-7.4c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-2-.9-3.3-1.6-4.6-3.7-.4-.7.4-.6 1.1-1.9.1-.2.1-.4 0-.6-.1-.2-.7-1.7-.9-2.3-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.9s1.2 3.4 1.4 3.6c.2.2 2.4 3.7 5.8 5.1 2.2.9 3.1 1 4.2.9.7-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/>
+    </svg>
+</button>
     <script src="script.js"></script>
 
 </body>
