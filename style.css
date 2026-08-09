@@ -102,7 +102,8 @@ button {
     transition:
         background 0.2s ease,
         color 0.2s ease,
-        transform 0.2s ease;
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 
@@ -153,7 +154,10 @@ input:focus {
     margin: 22px auto 0;
 
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(150px, 1.15fr);
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr))
+        minmax(150px, 1.15fr);
 
     gap: 10px;
 }
@@ -278,7 +282,8 @@ main {
     border: 1px solid #eee;
     border-radius: 18px;
 
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.08);
 
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
@@ -353,7 +358,6 @@ main {
 
 /* =========================================================
    INFO PAGES
-   ABOUT / REPORT / CUSTOM ORDER
 ========================================================= */
 
 .info-page {
@@ -375,7 +379,8 @@ main {
 
     transform: translateX(100%);
 
-    transition: transform 0.45s ease;
+    transition:
+        transform 0.45s ease;
 }
 
 .info-page.active {
@@ -629,7 +634,8 @@ main {
     border: 1px solid rgba(255, 122, 0, 0.18);
     border-radius: 20px;
 
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.06);
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.06);
 }
 
 .how-label {
@@ -654,7 +660,8 @@ main {
 .order-steps {
     display: grid;
 
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
 
     gap: 16px;
 }
@@ -707,7 +714,8 @@ main {
     border: 1px solid rgba(255, 122, 0, 0.18);
     border-radius: 20px;
 
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.06);
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.06);
 }
 
 .faq-label {
@@ -846,11 +854,13 @@ main {
 
     border-radius: 20px;
 
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.18);
 
     transform: translateY(25px) scale(0.97);
 
-    transition: transform 0.3s ease;
+    transition:
+        transform 0.3s ease;
 }
 
 .order-confirm-overlay.active .order-confirm-box {
@@ -973,9 +983,6 @@ main {
         background-attachment: scroll;
     }
 
-
-    /* HEADER */
-
     header {
         padding: 30px 15px;
     }
@@ -988,15 +995,13 @@ main {
         font-size: 15px;
     }
 
-
-    /* TOP MENU */
-
     .top-menu {
         width: 94%;
 
         margin: 16px auto 0;
 
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
 
         gap: 7px;
     }
@@ -1017,9 +1022,6 @@ main {
         overflow-wrap: normal;
         word-break: normal;
     }
-
-
-    /* LANGUAGE ON ITS OWN ROW */
 
     .language-selector {
         grid-column: 1 / -1;
@@ -1056,17 +1058,11 @@ main {
         text-align: center;
     }
 
-
-    /* MAIN */
-
     main {
         width: 94%;
 
         margin-top: 20px;
     }
-
-
-    /* PRODUCT CARDS */
 
     .game-card {
         padding: 19px;
@@ -1087,9 +1083,6 @@ main {
         font-size: 16px;
     }
 
-
-    /* INFO PAGES */
-
     .info-content {
         padding: 30px 20px 70px;
     }
@@ -1106,9 +1099,6 @@ main {
         margin-top: 35px;
     }
 
-
-    /* HOW TO ORDER */
-
     .how-to-order {
         margin-top: 50px;
 
@@ -1123,9 +1113,6 @@ main {
         grid-template-columns: 1fr;
     }
 
-
-    /* FAQ */
-
     .faq-section {
         padding: 25px 20px;
     }
@@ -1133,9 +1120,6 @@ main {
     .faq-section > h2 {
         font-size: 26px;
     }
-
-
-    /* CONFIRMATION */
 
     .order-confirm-box {
         padding: 22px;
@@ -1192,21 +1176,23 @@ main {
         padding-right: 16px;
     }
 }
-/* ===============================
+
+
+/* =========================================================
    SHOPPING CART
-================================ */
- 
+========================================================= */
+
 .cart-button {
     width: 92%;
     max-width: 850px;
 
     display: block;
 
-    margin: 10px auto 0; /* lebih dekat ke atas */
+    margin: 10px auto 0;
 
-    padding: 10px 14px; /* lebih kecil */
+    padding: 10px 14px;
 
-    font-size: 14px; /* tulisan lebih kecil */
+    font-size: 14px;
 
     background: #111;
     color: #d4af37;
@@ -1249,12 +1235,12 @@ main {
     display: flex;
     justify-content: flex-end;
 
-    background: rgba(0,0,0,.45);
+    background: rgba(0, 0, 0, 0.45);
 
     opacity: 0;
     visibility: hidden;
 
-    transition: .3s ease;
+    transition: 0.3s ease;
 }
 
 .cart-overlay.active {
@@ -1274,7 +1260,9 @@ main {
     overflow-y: auto;
 
     transform: translateX(100%);
-    transition: transform .35s ease;
+
+    transition:
+        transform 0.35s ease;
 }
 
 .cart-overlay.active .cart-box {
@@ -1368,9 +1356,11 @@ main {
         padding: 25px 20px;
     }
 }
-/* ===============================
+
+
+/* =========================================================
    WELCOME POPUP
-================================ */
+========================================================= */
 
 .welcome-overlay {
     position: fixed;
@@ -1421,7 +1411,8 @@ main {
 
     transform: translateY(20px) scale(0.97);
 
-    transition: transform 0.3s ease;
+    transition:
+        transform 0.3s ease;
 }
 
 .welcome-overlay.active .welcome-box {
@@ -1477,48 +1468,89 @@ main {
     line-height: 1.6;
 }
 
+
+/* =========================================================
+   WELCOME PROMO
+========================================================= */
+
 .welcome-promo {
     display: flex;
     flex-direction: column;
 
     gap: 6px;
 
-    margin: 22px 0;
+    margin: 18px 0;
+    padding: 14px 16px;
 
-    padding: 17px;
+    text-align: center;
 
-    background: #fff8ef;
+    background: #fffaf3;
 
-    border: 1px solid rgba(255, 122, 0, 0.2);
-    border-radius: 13px;
-
-    text-align: left;
+    border: 1px solid rgba(255, 122, 0, 0.20);
+    border-radius: 14px;
 }
 
 .welcome-promo strong {
-    color: #ff7a00;
+    display: block;
+
+    color: #111;
+
+    font-size: 15px;
 }
 
 .welcome-promo span {
+    display: block;
+
     color: #555;
 
-    font-size: 14px;
+    font-size: 13px;
     line-height: 1.5;
 }
 
+
+/* =========================================================
+   WELCOME CONTINUE BUTTON
+========================================================= */
+
 #welcomeContinue {
-    margin-top: 0;
+    margin-top: 20px;
 
     background: #ff7a00;
     color: #fff;
+
+    font-size: 16px;
+    font-weight: 800;
+
+    letter-spacing: 0.3px;
+
+    box-shadow:
+        0 6px 18px rgba(255, 122, 0, 0.25);
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 #welcomeContinue:hover {
-    background: #e66d00;
+    background: #ff8c1a;
+    color: #fff;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 22px rgba(255, 122, 0, 0.35);
 }
-/* ===============================
+
+#welcomeContinue:active {
+    transform: scale(0.98);
+}
+
+
+/* =========================================================
    FLOATING WHATSAPP
-================================ */
+========================================================= */
 
 #floatingWhatsApp {
     position: fixed;
@@ -1544,11 +1576,13 @@ main {
     border: none;
     border-radius: 50%;
 
-    box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+    box-shadow:
+        0 6px 20px rgba(0, 0, 0, 0.18);
 
     cursor: pointer;
 
-    transition: transform 0.2s ease;
+    transition:
+        transform 0.2s ease;
 }
 
 .whatsapp-icon {
@@ -1563,6 +1597,7 @@ main {
 }
 
 @media (max-width: 600px) {
+
     #floatingWhatsApp {
         width: 54px;
         height: 54px;

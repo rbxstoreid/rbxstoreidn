@@ -1516,99 +1516,84 @@ if (
 }
 
 
-// ============================================================
-// WELCOME POPUP
-// ============================================================
+/* =========================================================
+   WELCOME POPUP
+========================================================= */
 
-const welcomePopup =
-    getElement(
-        "welcomePopup"
-    );
+document.addEventListener("DOMContentLoaded", function () {
 
-const closeWelcome =
-    getElement(
-        "closeWelcome"
-    );
+    const welcomePopup =
+        document.getElementById("welcomePopup");
 
-const welcomeContinue =
-    getElement(
-        "welcomeContinue"
-    );
+    const closeWelcome =
+        document.getElementById("closeWelcome");
 
-const welcomeKey =
-    "rbxstore_welcome_v2";
+    const welcomeContinue =
+        document.getElementById("welcomeContinue");
+
+    if (!welcomePopup) return;
 
 
-function showWelcomePopup() {
+    // MUNCUL SETELAH INTRO SELESAI
+    setTimeout(function () {
 
-    if (!welcomePopup) {
-        return;
-    }
+        welcomePopup.classList.add("active");
 
-    if (
-        localStorage.getItem(
-            welcomeKey
-        ) === "shown"
-    ) {
-        return;
-    }
-
-    welcomePopup.classList.add(
-        "active"
-    );
-}
+    }, 4500);
 
 
-function closeWelcomePopup() {
+    // TOMBOL X
+    if (closeWelcome) {
 
-    if (!welcomePopup) {
-        return;
-    }
-
-    welcomePopup.classList.remove(
-        "active"
-    );
-
-    localStorage.setItem(
-        welcomeKey,
-        "shown"
-    );
-}
-
-
-if (closeWelcome) {
-
-    closeWelcome.addEventListener(
-        "click",
-        closeWelcomePopup
-    );
-}
-
-
-if (welcomeContinue) {
-
-    welcomeContinue.addEventListener(
-        "click",
-        closeWelcomePopup
-    );
-}
-
-
-window.addEventListener(
-    "load",
-    function () {
-
-        setTimeout(
+        closeWelcome.addEventListener(
+            "click",
             function () {
 
-                showWelcomePopup();
+                welcomePopup.classList.remove(
+                    "active"
+                );
 
-            },
-            4600
+            }
         );
     }
-);
 
+
+    // TOMBOL CONTINUE TO STORE
+    if (welcomeContinue) {
+
+        welcomeContinue.addEventListener(
+            "click",
+            function () {
+
+                welcomePopup.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+    }
+
+
+    // KLIK DI LUAR BOX
+    welcomePopup.addEventListener(
+        "click",
+        function (event) {
+
+            if (
+                event.target ===
+                welcomePopup
+            ) {
+
+                welcomePopup.classList.remove(
+                    "active"
+                );
+
+            }
+
+        }
+    );
+
+});
 
 // ============================================================
 // PRODUCT SCROLL ANIMATION
@@ -3835,7 +3820,7 @@ document
             ].addToCart;
     });
 
-    
+
     // --------------------------------------------------------
     // REFRESH CART
     // --------------------------------------------------------
