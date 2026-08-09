@@ -2,132 +2,688 @@
 <html lang="id">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>RBXSTORE.ID</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <!-- =====================================================
+         MENU + NIGHT MODE STYLE
+    ====================================================== -->
+
+    <style>
+
+        /* ===============================
+           HAMBURGER MENU
+        =============================== */
+
+        .menu-wrapper {
+            position: relative;
+            z-index: 5000;
+        }
+
+        .menu-toggle {
+            position: fixed;
+
+            top: 18px;
+            left: 18px;
+
+            width: 46px;
+            height: 46px;
+
+            border: none;
+            border-radius: 14px;
+
+            background: #111;
+            color: #d4af37;
+
+            font-size: 24px;
+            line-height: 1;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            cursor: pointer;
+
+            z-index: 6000;
+
+            transition:
+                background 0.22s ease,
+                color 0.22s ease,
+                transform 0.18s ease;
+        }
+
+        .menu-toggle:active {
+            transform: scale(0.92);
+        }
+
+
+        /* ===============================
+           MENU PANEL
+        =============================== */
+
+        .menu-panel {
+            position: fixed;
+
+            top: 74px;
+            left: 18px;
+
+            width: 245px;
+
+            padding: 12px;
+
+            background: #ffffff;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 15px 40px rgba(0,0,0,0.18);
+
+            opacity: 0;
+            visibility: hidden;
+
+            transform:
+                translateY(-10px)
+                scale(0.97);
+
+            transform-origin: top left;
+
+            transition:
+                opacity 0.22s ease,
+                transform 0.22s ease,
+                visibility 0.22s ease;
+
+            z-index: 5500;
+        }
+
+        .menu-panel.active {
+            opacity: 1;
+            visibility: visible;
+
+            transform:
+                translateY(0)
+                scale(1);
+        }
+
+
+        /* ===============================
+           MENU BUTTON
+        =============================== */
+
+        .menu-panel .menu-item {
+            width: 100%;
+
+            border: none;
+            border-radius: 11px;
+
+            padding: 12px 13px;
+
+            margin-bottom: 5px;
+
+            background: transparent;
+
+            color: #111;
+
+            text-align: left;
+
+            font-size: 14px;
+
+            cursor: pointer;
+
+            transition:
+                background 0.18s ease,
+                color 0.18s ease;
+        }
+
+        .menu-panel .menu-item:hover {
+            background: #f1f1f1;
+        }
+
+
+        /* ===============================
+           NIGHT MODE ROW
+        =============================== */
+
+        .night-mode-row {
+
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 11px 8px;
+
+            margin-top: 4px;
+
+            margin-bottom: 7px;
+
+            border-top: 1px solid #eeeeee;
+
+            font-size: 14px;
+        }
+
+
+        /* ===============================
+           NIGHT TOGGLE
+        =============================== */
+
+        .night-toggle {
+
+            width: 48px;
+            height: 26px;
+
+            padding: 3px;
+
+            border: none;
+
+            border-radius: 20px;
+
+            background: #d8d8d8;
+
+            cursor: pointer;
+
+            transition:
+                background 0.22s ease;
+        }
+
+        .night-toggle .toggle-circle {
+
+            display: block;
+
+            width: 20px;
+            height: 20px;
+
+            border-radius: 50%;
+
+            background: #ffffff;
+
+            transform: translateX(0);
+
+            transition:
+                transform 0.22s ease;
+        }
+
+        .night-toggle.active {
+            background: #d4af37;
+        }
+
+        .night-toggle.active .toggle-circle {
+            transform: translateX(22px);
+        }
+
+
+        /* ===============================
+           LANGUAGE
+        =============================== */
+
+        .language-selector {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding: 10px 8px 6px;
+
+            border-top: 1px solid #eeeeee;
+        }
+
+        .language-icon {
+            font-size: 17px;
+        }
+
+        .language-selector select {
+
+            flex: 1;
+
+            border: none;
+            outline: none;
+
+            background: transparent;
+
+            color: inherit;
+
+            font-size: 14px;
+
+            cursor: pointer;
+        }
+
+
+        /* =================================================
+           NIGHT MODE BASE
+        ================================================= */
+
+        body {
+            transition:
+                background-color 0.25s ease,
+                color 0.25s ease;
+        }
+
+        body.night-mode {
+            background: #0d0d0d;
+            color: #f5f5f5;
+        }
+
+
+        /* HEADER */
+
+        body.night-mode header {
+            background-color: #0d0d0d;
+            color: #ffffff;
+        }
+
+
+        /* MENU */
+
+        body.night-mode .menu-toggle {
+            background: #f5f5f5;
+            color: #111111;
+        }
+
+        body.night-mode .menu-panel {
+            background: #181818;
+            color: #ffffff;
+
+            box-shadow:
+                0 15px 40px rgba(0,0,0,0.55);
+        }
+
+        body.night-mode .menu-panel .menu-item {
+            color: #ffffff;
+        }
+
+        body.night-mode .menu-panel .menu-item:hover {
+            background: #292929;
+        }
+
+        body.night-mode .night-mode-row {
+            border-color: #333333;
+        }
+
+        body.night-mode .language-selector {
+            border-color: #333333;
+        }
+
+        body.night-mode .language-selector select {
+            color: #ffffff;
+        }
+
+        body.night-mode .language-selector option {
+            background: #181818;
+            color: #ffffff;
+        }
+
+
+        /* GAME CARD */
+
+        body.night-mode .game-card {
+            background: #181818;
+            color: #ffffff;
+            transition:
+                background-color 0.25s ease,
+                color 0.25s ease;
+        }
+
+        body.night-mode .game-card h2,
+        body.night-mode .game-card h3,
+        body.night-mode .game-card label {
+            color: #ffffff;
+        }
+
+
+        /* SELECT + INPUT */
+
+        body.night-mode input,
+        body.night-mode select,
+        body.night-mode textarea {
+            background: #222222;
+            color: #ffffff;
+            border-color: #444444;
+        }
+
+        body.night-mode option {
+            background: #222222;
+            color: #ffffff;
+        }
+
+
+        /* CUSTOM CARD */
+
+        body.night-mode .custom-order-card {
+            background: #181818;
+            color: #ffffff;
+        }
+
+
+        /* HOW TO ORDER */
+
+        body.night-mode .how-to-order {
+            background: #0d0d0d;
+            color: #ffffff;
+        }
+
+
+        /* FAQ */
+
+        body.night-mode .faq-section {
+            background: #0d0d0d;
+            color: #ffffff;
+        }
+
+        body.night-mode .faq-item {
+            background: #181818;
+            color: #ffffff;
+        }
+
+        body.night-mode .faq-question {
+            color: #ffffff;
+        }
+
+
+        /* CART */
+
+        body.night-mode .cart-box {
+            background: #181818;
+            color: #ffffff;
+        }
+
+
+        /* INFO PAGES */
+
+        body.night-mode .info-page {
+            background: #0d0d0d;
+            color: #ffffff;
+        }
+
+        body.night-mode .info-content {
+            color: #ffffff;
+        }
+
+
+        /* ORDER CONFIRMATION */
+
+        body.night-mode .order-confirm-box {
+            background: #181818;
+            color: #ffffff;
+        }
+
+
+        /* WELCOME */
+
+        body.night-mode .welcome-box {
+            background: #181818;
+            color: #ffffff;
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 600px) {
+
+            .menu-toggle {
+                top: 14px;
+                left: 14px;
+
+                width: 44px;
+                height: 44px;
+            }
+
+            .menu-panel {
+                top: 68px;
+                left: 14px;
+
+                width: 235px;
+            }
+
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
-    <!-- =========================
+
+    <!-- =====================================================
          INTRO
-    ========================== -->
+    ====================================================== -->
 
     <div id="storeIntro">
+
         <div class="intro-logo">
-            <span class="intro-rbx">RBXSTORE</span><span class="intro-id">.ID</span>
+
+            <span class="intro-rbx">
+                RBXSTORE
+            </span>
+
+            <span class="intro-id">
+                .ID
+            </span>
+
         </div>
+
     </div>
 
 
-    <!-- =========================
+    <!-- =====================================================
          HEADER
-    ========================== -->
+    ====================================================== -->
 
     <header>
-        <h1>RBXSTORE.ID</h1>
-        <p>Premium Game Store Indonesia</p>
+
+        <h1>
+            RBXSTORE.ID
+        </h1>
+
+        <p>
+            Premium Game Store Indonesia
+        </p>
+
     </header>
 
 
-    <!-- =========================
-         TOP MENU
-    ========================== -->
+    <!-- =====================================================
+         HAMBURGER MENU
+    ====================================================== -->
 
-    <nav class="top-menu">
+    <div class="menu-wrapper">
 
-        <button id="openAbout">
-            About Us
+        <button
+            id="menuToggle"
+            class="menu-toggle"
+            type="button"
+            aria-label="Open Menu"
+        >
+            ☰
         </button>
 
-        <button id="openReport">
-            Report an Issue
-        </button>
 
-        <button id="shareStore">
-            Share Store
-        </button>
+        <div
+            id="menuPanel"
+            class="menu-panel"
+        >
 
-        <div class="language-selector">
+            <button
+                id="openAbout"
+                class="menu-item"
+                type="button"
+            >
+                About Us
+            </button>
 
-            <span class="language-icon">🌐</span>
 
-            <select id="languageSelect">
-                <option value="id">Indonesia</option>
-                <option value="en">English</option>
-                <option value="fil">Filipino</option>
-                <option value="zh">中文</option>
-                <option value="es">Español</option>
-            </select>
+            <button
+                id="openReport"
+                class="menu-item"
+                type="button"
+            >
+                Report an Issue
+            </button>
+
+
+            <button
+                id="shareStore"
+                class="menu-item"
+                type="button"
+            >
+                Share Store
+            </button>
+
+
+            <!-- NIGHT MODE -->
+
+            <div class="night-mode-row">
+
+                <span>
+                    🌙 Night Mode
+                </span>
+
+                <button
+                    id="nightModeToggle"
+                    class="night-toggle"
+                    type="button"
+                    aria-label="Toggle Night Mode"
+                >
+
+                    <span class="toggle-circle"></span>
+
+                </button>
+
+            </div>
+
+
+            <!-- LANGUAGE -->
+
+            <div class="language-selector">
+
+                <span class="language-icon">
+                    🌐
+                </span>
+
+                <select id="languageSelect">
+
+                    <option value="id">
+                        Indonesia
+                    </option>
+
+                    <option value="en">
+                        English
+                    </option>
+
+                    <option value="fil">
+                        Filipino
+                    </option>
+
+                    <option value="zh">
+                        中文
+                    </option>
+
+                    <option value="es">
+                        Español
+                    </option>
+
+                </select>
+
+            </div>
 
         </div>
 
-    </nav>
+    </div>
 
 
-    <!-- =========================
+    <!-- =====================================================
          ABOUT US
-    ========================== -->
+    ====================================================== -->
 
-    <section id="aboutPage" class="info-page">
+    <section
+        id="aboutPage"
+        class="info-page"
+    >
 
         <div class="info-content">
 
-            <button id="closeAbout" class="back-button">
+            <button
+                id="closeAbout"
+                class="back-button"
+            >
                 ← Back to Store
             </button>
+
 
             <p class="info-label">
                 OUR STORY
             </p>
 
+
             <h1>
                 The Story Behind RBXSTORE.ID
             </h1>
 
+
             <p>
-                RBXSTORE.ID began on July 30, 2025, from a simple idea
-                that came to its founder during a school day. What started
-                as a small thought about selling online gaming products
+                RBXSTORE.ID began on July 30, 2025,
+                from a simple idea that came to its founder
+                during a school day. What started as a small
+                thought about selling online gaming products
                 soon developed into something more serious.
             </p>
 
+
             <p>
-                In its earliest days, RBXSTORE.ID did not have a website
-                or a digital storefront. The first product menu was
-                organised using paper while the store was still being
+                In its earliest days, RBXSTORE.ID did not
+                have a website or a digital storefront.
+                The first product menu was organised using
+                paper while the store was still being
                 developed and tested.
             </p>
 
-            <p>
-                As the idea continued to grow, a friend named Jesslyn
-                helped develop the store by creating an improved product
-                menu using Canva. This gave RBXSTORE.ID a more organised
-                way to present its products to customers.
-            </p>
 
             <p>
-                Over time, the store continued to improve its catalogue,
-                introduced promotions and discounts, and expanded the
-                selection of gaming products available to customers.
+                As the idea continued to grow, a friend named
+                Jesslyn helped develop the store by creating
+                an improved product menu using Canva.
+                This gave RBXSTORE.ID a more organised way
+                to present its products to customers.
             </p>
 
-            <p>
-                In July 2026, RBXSTORE.ID reached another important
-                milestone when its founder began developing an independent
-                website for the store. The project evolved from a
-                paper-based menu into a digital storefront built using
-                HTML, CSS, JavaScript, GitHub and GitHub Pages.
-            </p>
 
             <p>
-                Today, RBXSTORE.ID continues to operate and develop with
-                the goal of providing a simple, convenient and organised
-                way for customers to purchase digital gaming products.
+                Over time, the store continued to improve
+                its catalogue, introduced promotions and
+                discounts, and expanded the selection of
+                gaming products available to customers.
             </p>
+
+
+            <p>
+                In July 2026, RBXSTORE.ID reached another
+                important milestone when its founder began
+                developing an independent website for the store.
+                The project evolved from a paper-based menu
+                into a digital storefront built using HTML,
+                CSS, JavaScript, GitHub and GitHub Pages.
+            </p>
+
+
+            <p>
+                Today, RBXSTORE.ID continues to operate and
+                develop with the goal of providing a simple,
+                convenient and organised way for customers
+                to purchase digital gaming products.
+            </p>
+
 
             <p class="about-date">
                 Established July 30, 2025.
@@ -138,31 +694,42 @@
     </section>
 
 
-    <!-- =========================
+    <!-- =====================================================
          REPORT AN ISSUE
-    ========================== -->
+    ====================================================== -->
 
-    <section id="reportPage" class="info-page">
+    <section
+        id="reportPage"
+        class="info-page"
+    >
 
         <div class="info-content">
 
-            <button id="closeReport" class="back-button">
+            <button
+                id="closeReport"
+                class="back-button"
+            >
                 ← Back to Store
             </button>
+
 
             <p class="info-label">
                 CUSTOMER SUPPORT
             </p>
 
+
             <h1>
                 Report an Issue
             </h1>
 
+
             <p>
                 Experiencing an issue with RBXSTORE.ID?
-                Submit a report below and provide as much information
-                as possible so we can understand your concern.
+                Submit a report below and provide as much
+                information as possible so we can understand
+                your concern.
             </p>
+
 
             <form id="reportForm">
 
@@ -172,15 +739,18 @@
                     value="6435d11f-b0f0-4771-8451-8ac3cc2f9ac1"
                 >
 
+
                 <input
                     type="hidden"
                     name="subject"
                     value="New RBXSTORE.ID Issue Report"
                 >
 
+
                 <label for="reportName">
                     Name
                 </label>
+
 
                 <input
                     type="text"
@@ -190,15 +760,18 @@
                     required
                 >
 
+
                 <label for="reportCategory">
                     Issue Category
                 </label>
+
 
                 <select
                     id="reportCategory"
                     name="category"
                     required
                 >
+
                     <option value="Order Issue">
                         Order Issue
                     </option>
@@ -214,11 +787,14 @@
                     <option value="Other">
                         Other
                     </option>
+
                 </select>
+
 
                 <label for="reportMessage">
                     Describe the Issue
                 </label>
+
 
                 <textarea
                     id="reportMessage"
@@ -227,15 +803,17 @@
                     required
                 ></textarea>
 
+
                 <button type="submit">
                     Submit Report
                 </button>
 
             </form>
 
+
             <p class="report-note">
-                Reports are sent privately to RBXSTORE.ID and do not
-                affect any public store rating.
+                Reports are sent privately to RBXSTORE.ID
+                and do not affect any public store rating.
             </p>
 
         </div>
@@ -243,51 +821,92 @@
     </section>
 
 
-    <!-- =========================
-         PRODUCTS
-    ========================== -->
+    <!-- =====================================================
+         MAIN PRODUCTS
+    ====================================================== -->
 
     <main>
-        <!-- CART BUTTON -->
 
-<button id="openCart" class="cart-button">
-    🛒 Cart <span id="cartCount">0</span>
-</button>
 
-<!-- CART PANEL -->
+        <!-- =================================================
+             CART BUTTON
+        ================================================== -->
 
-<div id="cartPanel" class="cart-overlay">
+        <button
+            id="openCart"
+            class="cart-button"
+            type="button"
+        >
 
-    <div class="cart-box">
+            🛒 Cart
 
-        <button id="closeCart" class="cart-close">
-            ×
+            <span id="cartCount">
+                0
+            </span>
+
         </button>
 
-        <p class="cart-label">YOUR CART</p>
 
-        <h2>Shopping Cart</h2>
+        <!-- =================================================
+             CART PANEL
+        ================================================== -->
 
-        <div id="cartItems"></div>
+        <div
+            id="cartPanel"
+            class="cart-overlay"
+        >
 
-        <button id="checkoutCart">
-            Checkout via WhatsApp
-        </button>
+            <div class="cart-box">
 
-    </div>
+                <button
+                    id="closeCart"
+                    class="cart-close"
+                    type="button"
+                >
+                    ×
+                </button>
 
-</div>
+
+                <p class="cart-label">
+                    YOUR CART
+                </p>
 
 
-        <!-- ROBUX -->
+                <h2>
+                    Shopping Cart
+                </h2>
+
+
+                <div id="cartItems"></div>
+
+
+                <button
+                    id="checkoutCart"
+                    type="button"
+                >
+                    Checkout via WhatsApp
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             ROBUX
+        ================================================== -->
 
         <section class="game-card">
 
-            <h2>🎮 Robux - Roblox</h2>
+            <h2>
+                🎮 Robux - Roblox
+            </h2>
+
 
             <label>
                 Pilih Nominal
             </label>
+
 
             <select id="robux">
 
@@ -299,24 +918,24 @@
                     80 Robux - Rp 14,000
                 </option>
 
-                <option value="25000">
-                    150 Robux - Rp 25,000
+                <option value="20000">
+                    150 Robux - Rp 20,000
                 </option>
 
-                <option value="44000">
-                    300 Robux - Rp 44,000
+                <option value="53000">
+                    300 Robux - Rp 53,000
                 </option>
 
-                <option value="71000">
-                    500 Robux - Rp 71,000
+                <option value="82000">
+                    500 Robux - Rp 82,000
                 </option>
 
-                <option value="101000">
-                    750 Robux - Rp 101,000
+                <option value="120000">
+                    750 Robux - Rp 120,000
                 </option>
 
-                <option value="133000">
-                    1000 Robux - Rp 133,000
+                <option value="165000">
+                    1000 Robux - Rp 165,000
                 </option>
 
                 <option value="custom">
@@ -324,6 +943,7 @@
                 </option>
 
             </select>
+
 
             <div
                 id="customRobuxBox"
@@ -334,6 +954,7 @@
                     Masukkan Jumlah Robux
                 </label>
 
+
                 <input
                     type="number"
                     id="customRobux"
@@ -343,18 +964,25 @@
 
             </div>
 
+
             <h3 id="hargaRobux">
                 Rp 9,000
             </h3>
 
-            <button id="waRobux">
+
+            <button
+                id="waRobux"
+                type="button"
+            >
                 Beli Sekarang via WhatsApp
             </button>
 
         </section>
 
 
-        <!-- GROW A GARDEN -->
+        <!-- =================================================
+             GROW A GARDEN 2
+        ================================================== -->
 
         <section class="game-card">
 
@@ -362,9 +990,11 @@
                 🌱 Grow A Garden 2 - Roblox
             </h2>
 
+
             <label>
                 Pilih Produk
             </label>
+
 
             <select id="garden">
 
@@ -422,18 +1052,25 @@
 
             </select>
 
+
             <h3 id="hargaGarden">
                 Rp 2,000
             </h3>
 
-            <button id="waGarden">
+
+            <button
+                id="waGarden"
+                type="button"
+            >
                 Beli Sekarang via WhatsApp
             </button>
 
         </section>
 
 
-        <!-- TOILET TOWER DEFENSE -->
+        <!-- =================================================
+             TOILET TOWER DEFENSE
+        ================================================== -->
 
         <section class="game-card">
 
@@ -441,9 +1078,11 @@
                 🚽 Toilet Tower Defense - Roblox
             </h2>
 
+
             <label>
                 Pilih Produk
             </label>
+
 
             <select id="ttd">
 
@@ -465,18 +1104,25 @@
 
             </select>
 
+
             <h3 id="hargaTTD">
                 Rp 650
             </h3>
 
-            <button id="waTTD">
+
+            <button
+                id="waTTD"
+                type="button"
+            >
                 Beli Sekarang via WhatsApp
             </button>
 
         </section>
 
 
-        <!-- MOBILE LEGENDS -->
+        <!-- =================================================
+             MOBILE LEGENDS
+        ================================================== -->
 
         <section class="game-card">
 
@@ -484,9 +1130,11 @@
                 💎 Mobile Legends
             </h2>
 
+
             <label>
                 Pilih Diamond
             </label>
+
 
             <select id="ml">
 
@@ -494,16 +1142,16 @@
                     100 Diamonds - Rp 25,000
                 </option>
 
-                <option value="60000">
-                    300 Diamonds - Rp 60,000
+                <option value="65000">
+                    300 Diamonds - Rp 65,000
                 </option>
 
-                <option value="85000">
-                    500 Diamonds - Rp 85,000
+                <option value="105000">
+                    500 Diamonds - Rp 105,000
                 </option>
 
-                <option value="160000">
-                    1,000 Diamonds - Rp 160,000
+                <option value="199000">
+                    1,000 Diamonds - Rp 198,500
                 </option>
 
                 <option value="custom">
@@ -511,6 +1159,7 @@
                 </option>
 
             </select>
+
 
             <div
                 id="customDiamondBox"
@@ -521,6 +1170,7 @@
                     Masukkan Jumlah Diamonds
                 </label>
 
+
                 <input
                     type="number"
                     id="customDiamond"
@@ -530,18 +1180,25 @@
 
             </div>
 
+
             <h3 id="hargaML">
                 Rp 25,000
             </h3>
 
-            <button id="waML">
+
+            <button
+                id="waML"
+                type="button"
+            >
                 Beli Sekarang via WhatsApp
             </button>
 
         </section>
 
 
-        <!-- 99 NIGHTS IN THE FOREST -->
+        <!-- =================================================
+             99 NIGHTS IN THE FOREST
+        ================================================== -->
 
         <section class="game-card">
 
@@ -549,9 +1206,11 @@
                 🌲 99 Nights in the Forest - Roblox
             </h2>
 
+
             <label>
                 Pilih Diamonds
             </label>
+
 
             <select id="forest">
 
@@ -573,18 +1232,25 @@
 
             </select>
 
+
             <h3 id="hargaForest">
                 Rp 15,000
             </h3>
 
-            <button id="waForest">
+
+            <button
+                id="waForest"
+                type="button"
+            >
                 Beli Sekarang via WhatsApp
             </button>
 
         </section>
 
 
-        <!-- FC MOBILE -->
+        <!-- =================================================
+             FC MOBILE
+        ================================================== -->
 
         <section class="game-card">
 
@@ -592,9 +1258,11 @@
                 ⚽ FC Mobile
             </h2>
 
+
             <label>
                 Pilih FC Points
             </label>
+
 
             <select id="fcMobile">
 
@@ -626,6 +1294,7 @@
 
                 </optgroup>
 
+
                 <optgroup label="Silver FC Points">
 
                     <option value="6000">
@@ -656,18 +1325,25 @@
 
             </select>
 
+
             <h3 id="hargaFC">
                 Rp 6,000
             </h3>
 
-            <button id="waFC">
+
+            <button
+                id="waFC"
+                type="button"
+            >
                 Beli Sekarang via WhatsApp
             </button>
 
         </section>
 
 
-        <!-- FREE FIRE -->
+        <!-- =================================================
+             FREE FIRE
+        ================================================== -->
 
         <section class="game-card">
 
@@ -675,9 +1351,11 @@
                 🔥 Free Fire
             </h2>
 
+
             <label>
                 Pilih Diamonds
             </label>
+
 
             <select id="freeFire">
 
@@ -715,6 +1393,7 @@
 
             </select>
 
+
             <div
                 id="customFFBox"
                 style="display:none;"
@@ -723,6 +1402,7 @@
                 <label>
                     Masukkan Jumlah Diamonds
                 </label>
+
 
                 <input
                     type="number"
@@ -733,26 +1413,34 @@
 
             </div>
 
+
             <h3 id="hargaFF">
                 Rp 10,000
             </h3>
 
-            <button id="waFF">
+
+            <button
+                id="waFF"
+                type="button"
+            >
                 Beli Sekarang via WhatsApp
             </button>
 
         </section>
 
 
-        <!-- =========================
-             CUSTOM PEMBELIAN
-        ========================== -->
+        <!-- =================================================
+             CUSTOM PEMBELIAN CARD
+        ================================================== -->
 
-        <section class="game-card custom-order-card">
+        <section
+            class="game-card custom-order-card"
+        >
 
             <h2>
                 Custom Pembelian
             </h2>
+
 
             <p>
                 Tidak menemukan produk yang kamu cari?
@@ -760,20 +1448,25 @@
                 game online lainnya melalui RBXSTORE.ID.
             </p>
 
+
             <p>
                 Hubungi kami untuk mengecek ketersediaan produk dan harga.
             </p>
 
-            <button id="customOrder">
+
+            <button
+                id="customOrder"
+                type="button"
+            >
                 Custom Pembelian
             </button>
 
         </section>
 
 
-        <!-- =========================
+        <!-- =================================================
              CUSTOM ORDER PAGE
-        ========================== -->
+        ================================================== -->
 
         <section
             id="customOrderPage"
@@ -785,28 +1478,35 @@
                 <button
                     id="closeCustomOrder"
                     class="back-button"
+                    type="button"
                 >
                     ← Back to Store
                 </button>
+
 
                 <p class="info-label">
                     CUSTOM ORDER
                 </p>
 
+
                 <h1>
                     Custom Pembelian
                 </h1>
 
+
                 <p>
-                    Pilih game dan masukkan produk atau item yang ingin dibeli.
-                    Ketersediaan dan harga akan dikonfirmasi melalui WhatsApp.
+                    Pilih game dan masukkan produk atau item
+                    yang ingin dibeli. Ketersediaan dan harga
+                    akan dikonfirmasi melalui WhatsApp.
                 </p>
+
 
                 <form id="customOrderForm">
 
                     <label for="customGame">
                         Pilih Game
                     </label>
+
 
                     <select
                         id="customGame"
@@ -821,35 +1521,43 @@
                             Pilih game
                         </option>
 
+
                         <option value="Murder Mystery 2">
                             Murder Mystery 2
                         </option>
+
 
                         <option value="Brookhaven">
                             Brookhaven
                         </option>
 
+
                         <option value="Car Driving Indonesia">
                             Car Driving Indonesia
                         </option>
+
 
                         <option value="Blox Fruits">
                             Blox Fruits
                         </option>
 
+
                         <option value="Steal a Brainrot">
                             Steal a Brainrot
                         </option>
 
+
                         <option value="Keyboard Escape">
                             Keyboard Escape
                         </option>
+
 
                         <option value="Other">
                             Other
                         </option>
 
                     </select>
+
 
                     <div
                         id="otherGameBox"
@@ -860,6 +1568,7 @@
                             Nama Game
                         </label>
 
+
                         <input
                             type="text"
                             id="otherGame"
@@ -868,9 +1577,11 @@
 
                     </div>
 
+
                     <label for="customItem">
                         Nama Pesanan
                     </label>
+
 
                     <input
                         type="text"
@@ -878,6 +1589,7 @@
                         placeholder="Masukkan nama produk atau item"
                         required
                     >
+
 
                     <button type="submit">
                         Continue via WhatsApp
@@ -890,9 +1602,9 @@
         </section>
 
 
-        <!-- =========================
+        <!-- =================================================
              HOW TO ORDER
-        ========================== -->
+        ================================================== -->
 
         <section class="how-to-order">
 
@@ -900,62 +1612,86 @@
                 HOW TO ORDER
             </p>
 
+
             <h2>
                 Simple & Easy Ordering
             </h2>
 
+
             <div class="order-steps">
+
 
                 <div class="order-step">
 
-                    <span>01</span>
+                    <span>
+                        01
+                    </span>
+
 
                     <h3>
                         Choose Your Product
                     </h3>
 
+
                     <p>
-                        Select the game, item, or amount you want to purchase.
+                        Select the game, item, or amount
+                        you want to purchase.
                     </p>
 
                 </div>
 
+
                 <div class="order-step">
 
-                    <span>02</span>
+                    <span>
+                        02
+                    </span>
+
 
                     <h3>
                         Order via WhatsApp
                     </h3>
 
+
                     <p>
-                        Tap the WhatsApp button and your order details
-                        will be prepared automatically.
+                        Tap the WhatsApp button and your order
+                        details will be prepared automatically.
                     </p>
 
                 </div>
 
+
                 <div class="order-step">
 
-                    <span>03</span>
+                    <span>
+                        03
+                    </span>
+
 
                     <h3>
                         Complete Payment
                     </h3>
 
+
                     <p>
-                        Follow the payment instructions provided by RBXSTORE.ID.
+                        Follow the payment instructions
+                        provided by RBXSTORE.ID.
                     </p>
 
                 </div>
 
+
                 <div class="order-step">
 
-                    <span>04</span>
+                    <span>
+                        04
+                    </span>
+
 
                     <h3>
                         Order Processed
                     </h3>
+
 
                     <p>
                         After payment is confirmed,
@@ -964,20 +1700,22 @@
 
                 </div>
 
+
             </div>
 
         </section>
 
 
-        <!-- =========================
+        <!-- =================================================
              FAQ
-        ========================== -->
+        ================================================== -->
 
         <section class="faq-section">
 
             <p class="faq-label">
                 FAQ
             </p>
+
 
             <h2>
                 Frequently Asked Questions
@@ -986,16 +1724,24 @@
 
             <div class="faq-item">
 
-                <button class="faq-question">
+                <button class="faq-question" type="button">
+
                     How long does an order take?
-                    <span>+</span>
+
+                    <span>
+                        +
+                    </span>
+
                 </button>
 
+
                 <div class="faq-answer">
+
                     <p>
                         Processing time depends on the product
                         and current availability.
                     </p>
+
                 </div>
 
             </div>
@@ -1003,17 +1749,25 @@
 
             <div class="faq-item">
 
-                <button class="faq-question">
+                <button class="faq-question" type="button">
+
                     How do I place an order?
-                    <span>+</span>
+
+                    <span>
+                        +
+                    </span>
+
                 </button>
 
+
                 <div class="faq-answer">
+
                     <p>
                         Choose a product, select the amount,
                         then tap the Buy via WhatsApp button
                         to continue your order.
                     </p>
+
                 </div>
 
             </div>
@@ -1021,16 +1775,24 @@
 
             <div class="faq-item">
 
-                <button class="faq-question">
+                <button class="faq-question" type="button">
+
                     What payment methods are available?
-                    <span>+</span>
+
+                    <span>
+                        +
+                    </span>
+
                 </button>
 
+
                 <div class="faq-answer">
+
                     <p>
                         Available payment methods will be provided
                         through WhatsApp when you place an order.
                     </p>
+
                 </div>
 
             </div>
@@ -1038,16 +1800,25 @@
 
             <div class="faq-item">
 
-                <button class="faq-question">
+                <button class="faq-question" type="button">
+
                     What if the product I want isn't listed?
-                    <span>+</span>
+
+                    <span>
+                        +
+                    </span>
+
                 </button>
 
+
                 <div class="faq-answer">
+
                     <p>
                         Use Custom Pembelian, select your game,
-                        and enter the product or item you are looking for.
+                        and enter the product or item you are
+                        looking for.
                     </p>
+
                 </div>
 
             </div>
@@ -1055,16 +1826,24 @@
 
             <div class="faq-item">
 
-                <button class="faq-question">
+                <button class="faq-question" type="button">
+
                     What should I do if I have an issue with my order?
-                    <span>+</span>
+
+                    <span>
+                        +
+                    </span>
+
                 </button>
 
+
                 <div class="faq-answer">
+
                     <p>
                         Use Report an Issue or contact RBXSTORE.ID
                         through WhatsApp for assistance.
                     </p>
+
                 </div>
 
             </div>
@@ -1072,16 +1851,24 @@
 
             <div class="faq-item">
 
-                <button class="faq-question">
+                <button class="faq-question" type="button">
+
                     Can prices change?
-                    <span>+</span>
+
+                    <span>
+                        +
+                    </span>
+
                 </button>
 
+
                 <div class="faq-answer">
+
                     <p>
                         Yes. Prices may change depending on
                         product availability and market conditions.
                     </p>
+
                 </div>
 
             </div>
@@ -1091,68 +1878,460 @@
     </main>
 
 
-    <!-- JAVASCRIPT -->
-<!-- ORDER CONFIRMATION -->
+    <!-- =====================================================
+         ORDER CONFIRMATION
+    ====================================================== -->
 
-<div id="orderConfirm" class="order-confirm-overlay">
+    <div
+        id="orderConfirm"
+        class="order-confirm-overlay"
+    >
 
-    <div class="order-confirm-box">
+        <div class="order-confirm-box">
 
-        <p class="confirm-label">ORDER CONFIRMATION</p>
-        <h2 id="confirmTitle">Confirm Your Order</h2>
+            <p class="confirm-label">
+                ORDER CONFIRMATION
+            </p>
 
-        <div class="confirm-details">
-            <p><span id="confirmGameLabel">Game</span>: <strong id="confirmGame"></strong></p>
-            <p><span id="confirmProductLabel">Product</span>: <strong id="confirmProduct"></strong></p>
-            <p><span id="confirmPriceLabel">Price</span>: <strong id="confirmPrice"></strong></p>
-        </div>
 
-        <div class="confirm-buttons">
-            <button id="cancelOrder">Cancel</button>
-            <button id="continueOrder">Continue to WhatsApp</button>
-        </div>
+            <h2 id="confirmTitle">
+                Confirm Your Order
+            </h2>
 
-    </div>
 
-</div>
-<!-- WELCOME POPUP -->
+            <div class="confirm-details">
 
-<div id="welcomePopup" class="welcome-overlay">
+                <p>
+                    <span id="confirmGameLabel">
+                        Game
+                    </span>:
 
-    <div class="welcome-box">
+                    <strong id="confirmGame"></strong>
+                </p>
 
-        <button id="closeWelcome" class="welcome-close">×</button>
 
-        <p class="welcome-label">RBXSTORE.ID</p>
+                <p>
+                    <span id="confirmProductLabel">
+                        Product
+                    </span>:
 
-        <h2>Welcome to RBXSTORE.ID</h2>
+                    <strong id="confirmProduct"></strong>
+                </p>
 
-        <p>
-            Nikmati pengalaman berbelanja produk game digital
-            dengan mudah, cepat, dan praktis.
-        </p>
 
-        <div class="welcome-promo">
-            <strong>🎁 Special Offer</strong>
-            <span>Belanja di atas Rp30.000 dan dapatkan diskon 10%.</span>
-        </div>
+                <p>
+                    <span id="confirmPriceLabel">
+                        Price
+                    </span>:
 
-        <button id="welcomeContinue">
-            Continue to Store
+                    <strong id="confirmPrice"></strong>
+                </p>
+
+            </div>
+            <div class="promo-box">
+
+    <label for="promoCode">
+        Promo Code
+    </label>
+
+    <div class="promo-input-row">
+
+        <input
+            type="text"
+            id="promoCode"
+            placeholder="Masukkan promo code"
+            autocomplete="off"
+        >
+
+        <button
+            type="button"
+            id="applyPromo"
+        >
+            Terapkan
         </button>
 
     </div>
 
-</div>
-<!-- FLOATING WHATSAPP -->
+    <p id="promoMessage"></p>
 
-<button id="floatingWhatsApp" aria-label="Contact RBXSTORE.ID">
-    <svg class="whatsapp-icon" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.6 0 .4 5.2.4 11.7c0 2.1.5 4.1 1.6 5.9L.3 24l6.6-1.7c1.8 1 3.4 1.5 5.2 1.5h.1c6.4 0 11.7-5.2 11.7-11.7 0-3.1-1.2-6.3-3.4-8.6zM12.1 21.8c-1.6 0-3.2-.4-4.6-1.3l-.3-.2-3.9 1 1-3.8-.2-.3a9.9 9.9 0 1 1 8 4.6zm5.4-7.4c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-2-.9-3.3-1.6-4.6-3.7-.4-.7.4-.6 1.1-1.9.1-.2.1-.4 0-.6-.1-.2-.7-1.7-.9-2.3-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.9s1.2 3.4 1.4 3.6c.2.2 2.4 3.7 5.8 5.1 2.2.9 3.1 1 4.2.9.7-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/>
-    </svg>
-</button>
+</div>
+
+
+            <div class="confirm-buttons">
+
+                <button
+                    id="cancelOrder"
+                    type="button"
+                >
+                    Cancel
+                </button>
+
+
+                <button
+                    id="continueOrder"
+                    type="button"
+                >
+                    Continue to WhatsApp
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         WELCOME POPUP
+    ====================================================== -->
+
+    <div
+        id="welcomePopup"
+        class="welcome-overlay"
+    >
+
+        <div class="welcome-box">
+
+            <button
+                id="closeWelcome"
+                class="welcome-close"
+                type="button"
+            >
+                ×
+            </button>
+
+
+            <p class="welcome-label">
+                RBXSTORE.ID
+            </p>
+
+
+            <h2>
+                Welcome to RBXSTORE.ID
+            </h2>
+
+
+            <p>
+                Nikmati pengalaman berbelanja produk game digital
+                dengan mudah, cepat, dan praktis.
+            </p>
+
+
+            <div class="welcome-promo">
+
+                <strong>
+                    🎁 Special Offer
+                </strong>
+
+                <span>
+                    Belanja di atas Rp30.000
+                    dan dapatkan diskon 10%.
+                </span>
+
+            </div>
+
+
+            <button
+                id="welcomeContinue"
+                type="button"
+            >
+                Continue to Store
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         FLOATING WHATSAPP
+    ====================================================== -->
+
+    <button
+        id="floatingWhatsApp"
+        aria-label="Contact RBXSTORE.ID"
+        type="button"
+    >
+
+        <svg
+            class="whatsapp-icon"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+        >
+
+            <path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.6 0 .4 5.2.4 11.7c0 2.1.5 4.1 1.6 5.9L.3 24l6.6-1.7c1.8 1 3.4 1.5 5.2 1.5h.1c6.4 0 11.7-5.2 11.7-11.7 0-3.1-1.2-6.3-3.4-8.6zM12.1 21.8c-1.6 0-3.2-.4-4.6-1.3l-.3-.2-3.9 1 1-3.8-.2-.3a9.9 9.9 0 1 1 8 4.6zm5.4-7.4c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-2-.9-3.3-1.6-4.6-3.7-.4-.7.4-.6 1.1-1.9.1-.2.1-.4 0-.6-.1-.2-.7-1.7-.9-2.3-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.9s1.2 3.4 1.4 3.6c.2.2 2.4 3.7 5.8 5.1 2.2.9 3.1 1 4.2.9.7-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/>
+
+        </svg>
+
+    </button>
+
+
+    <!-- =====================================================
+         EXISTING JAVASCRIPT
+    ====================================================== -->
+
     <script src="script.js"></script>
+    
+
+    <!-- =====================================================
+         HAMBURGER + NIGHT MODE JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+
+        /* =====================================================
+           HAMBURGER MENU
+        ====================================================== */
+
+        const menuToggle =
+            document.getElementById("menuToggle");
+
+        const menuPanel =
+            document.getElementById("menuPanel");
+
+
+        if (
+            menuToggle &&
+            menuPanel
+        ) {
+
+            menuToggle.addEventListener(
+                "click",
+                function (event) {
+
+                    event.stopPropagation();
+
+                    const isOpen =
+                        menuPanel.classList.toggle("active");
+
+
+                    if (isOpen) {
+
+                        menuToggle.textContent = "✕";
+
+                        menuToggle.setAttribute(
+                            "aria-label",
+                            "Close Menu"
+                        );
+
+                    } else {
+
+                        menuToggle.textContent = "☰";
+
+                        menuToggle.setAttribute(
+                            "aria-label",
+                            "Open Menu"
+                        );
+
+                    }
+
+                }
+            );
+
+
+            /* Tutup ketika klik di luar */
+
+            document.addEventListener(
+                "click",
+                function (event) {
+
+                    if (
+                        !menuPanel.contains(event.target) &&
+                        !menuToggle.contains(event.target)
+                    ) {
+
+                        menuPanel.classList.remove(
+                            "active"
+                        );
+
+                        menuToggle.textContent =
+                            "☰";
+
+                        menuToggle.setAttribute(
+                            "aria-label",
+                            "Open Menu"
+                        );
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           NIGHT MODE
+        ====================================================== */
+
+        const nightModeToggle =
+            document.getElementById(
+                "nightModeToggle"
+            );
+
+
+        function applyNightMode(
+            enabled
+        ) {
+
+            if (enabled) {
+
+                document.body.classList.add(
+                    "night-mode"
+                );
+
+
+                if (nightModeToggle) {
+
+                    nightModeToggle.classList.add(
+                        "active"
+                    );
+
+                }
+
+
+                localStorage.setItem(
+                    "rbxNightMode",
+                    "on"
+                );
+
+            } else {
+
+                document.body.classList.remove(
+                    "night-mode"
+                );
+
+
+                if (nightModeToggle) {
+
+                    nightModeToggle.classList.remove(
+                        "active"
+                    );
+
+                }
+
+
+                localStorage.setItem(
+                    "rbxNightMode",
+                    "off"
+                );
+
+            }
+
+        }
+
+
+        /* Ambil mode terakhir */
+
+        const savedNightMode =
+            localStorage.getItem(
+                "rbxNightMode"
+            ) === "on";
+
+
+        applyNightMode(
+            savedNightMode
+        );
+
+
+        /* Tombol ON / OFF */
+
+        if (nightModeToggle) {
+
+            nightModeToggle.addEventListener(
+                "click",
+                function () {
+
+                    const currentlyNight =
+                        document.body.classList.contains(
+                            "night-mode"
+                        );
+
+
+                    applyNightMode(
+                        !currentlyNight
+                    );
+
+                }
+            );
+
+        }
+
+    </script>
+
+<!-- BACK TO TOP -->
+<button id="backToTop" type="button" aria-label="Back to top">
+    ↑
+</button>
+
+<style>
+#backToTop {
+    position: fixed;
+    right: 20px;
+    bottom: 90px;
+    width: 48px;
+    height: 48px;
+    border: none;
+    border-radius: 50%;
+    background: #111;
+    color: #d4af37;
+    font-size: 25px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity .2s ease, transform .2s ease;
+    z-index: 9999;
+}
+
+#backToTop.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+#backToTop:active {
+    transform: scale(.92);
+}
+
+@media (max-width: 600px) {
+    #backToTop {
+        right: 16px;
+        bottom: 82px;
+        width: 46px;
+        height: 46px;
+    }
+}
+</style>
+
+<script>
+const backToTop = document.getElementById("backToTop");
+
+window.addEventListener("scroll", function () {
+
+    if (window.scrollY >= 700) {
+        backToTop.classList.add("show");
+    } else {
+        backToTop.classList.remove("show");
+    }
+
+}, { passive: true });
+
+backToTop.addEventListener("click", function () {
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+});
+</script>
+
+<script src="script.js"></script>
 
 </body>
-
 </html>
