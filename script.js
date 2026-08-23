@@ -4597,3 +4597,342 @@ renderCart();
 // ============================================================
 // END OF RBXSTORE.ID SCRIPT
 // ============================================================
+
+/* ============================================================
+   BASIC / EXPRESS DELIVERY
+============================================================ */
+
+(function () {
+
+    let selectedDelivery = "Basic";
+
+    function showDeliveryChoice() {
+
+        const box = document.querySelector(".order-confirm-box");
+        if (!box) return;
+
+        let old = document.getElementById("deliveryChoice");
+
+        if (!old) {
+            old = document.createElement("div");
+            old.id = "deliveryChoice";
+
+            old.innerHTML = `
+                <div class="delivery-title">Pilih Proses</div>
+
+                <button type="button" class="delivery-option selected" data-type="Basic">
+                    <span>
+                        <strong>Basic</strong>
+                        <small>Bayar dulu → item diberikan</small>
+                    </span>
+                    <b>FREE</b>
+                </button>
+
+                <button type="button" class="delivery-option" data-type="Express">
+                    <span>
+                        <strong>Express</strong>
+                        <small>Item diberikan sekarang → bayar nanti</small>
+                    </span>
+                    <b>+Rp5.000</b>
+                </button>
+            `;
+
+            const promoBox = box.querySelector(".promo-box");
+
+            if (promoBox) {
+                promoBox.before(old);
+            } else {
+                box.querySelector(".confirm-buttons").before(old);
+            }
+
+            old.querySelectorAll(".delivery-option").forEach(function (button) {
+
+                button.addEventListener("click", function () {
+
+                    selectedDelivery =
+                        this.dataset.type;
+
+                    old.querySelectorAll(".delivery-option")
+                        .forEach(function (item) {
+                            item.classList.remove("selected");
+                        });
+
+                    this.classList.add("selected");
+
+                });
+
+            });
+        }
+
+        document
+            .querySelectorAll(".delivery-option")
+            .forEach(function (item) {
+
+                item.classList.toggle(
+                    "selected",
+                    item.dataset.type === selectedDelivery
+                );
+
+            });
+    }
+
+
+    const originalBukaWhatsApp = bukaWhatsApp;
+
+    bukaWhatsApp = function (pesan) {
+
+        selectedDelivery = "Basic";
+
+        originalBukaWhatsApp(pesan);
+
+        showDeliveryChoice();
+    };
+
+
+    const continueButton =
+        document.getElementById("continueOrder");
+
+    if (continueButton) {
+
+        continueButton.addEventListener(
+            "click",
+            function (event) {
+
+                event.stopImmediatePropagation();
+
+                if (!pendingOrderMessage) {
+                    return;
+                }
+
+                let finalMessage =
+                    applyDiscountToMessage(
+                        pendingOrderMessage
+                    );
+
+                let hargaMatch =
+                    finalMessage.match(
+                        /Total:\s*Rp\s*([\d.,]+)/
+                    );
+
+                let total =
+                    hargaMatch
+                        ? Number(
+                            hargaMatch[1]
+                                .replace(/[.,]/g, "")
+                        )
+                        : 0;
+
+                if (selectedDelivery === "Express") {
+
+                    total += 5000;
+
+                    finalMessage =
+                        finalMessage.replace(
+                            /Total:\s*Rp\s*[\d.,]+/,
+                            "Total: Rp " +
+                            total.toLocaleString("id-ID")
+                        );
+
+                }
+
+                finalMessage +=
+                    `
+
+Proses: ${selectedDelivery}`;
+
+                if (selectedDelivery === "Basic") {
+
+                    finalMessage +=
+                        `
+Basic: FREE
+Bayar dulu baru item diberikan.`;
+
+                } else {
+
+                    finalMessage +=
+                        `
+Express: +Rp5.000
+Item diberikan sekarang, pembayaran nanti.`;
+
+                }
+
+                window.open(
+                    createWhatsAppURL(finalMessage),
+                    "_blank"
+                );
+
+                const orderConfirm =
+                    document.getElementById("orderConfirm");
+
+                if (orderConfirm) {
+                    orderConfirm.classList.remove("active");
+                }
+
+                document.body.style.overflow = "";
+
+                pendingWhatsAppURL = "";
+
+            },
+            true
+        );
+
+    }
+
+})();
+/* ============================================================
+   BASIC / EXPRESS TRANSLATIONS
+============================================================ */
+
+(function () {
+
+    const deliveryTranslations = {
+
+        id: {
+            title: "Pilih Proses",
+            basic: "Basic",
+            basicDesc: "Bayar dulu → item diberikan",
+            basicPrice: "FREE",
+            express: "Express",
+            expressDesc: "Item diberikan sekarang → bayar nanti",
+            expressPrice: "+Rp5.000"
+        },
+
+        en: {
+            title: "Choose Process",
+            basic: "Basic",
+            basicDesc: "Pay first → item delivered",
+            basicPrice: "FREE",
+            express: "Express",
+            expressDesc: "Item delivered now → pay later",
+            expressPrice: "+Rp5,000"
+        },
+
+        fil: {
+            title: "Piliin ang Proseso",
+            basic: "Basic",
+            basicDesc: "Magbayad muna → ibibigay ang item",
+            basicPrice: "LIBRE",
+            express: "Express",
+            expressDesc: "Ibibigay ngayon → magbayad mamaya",
+            expressPrice: "+Rp5.000"
+        },
+
+        zh: {
+            title: "选择处理方式",
+            basic: "基础",
+            basicDesc: "先付款 → 再发放商品",
+            basicPrice: "免费",
+            express: "快速",
+            expressDesc: "立即发放商品 → 稍后付款",
+            expressPrice: "+Rp5.000"
+        },
+
+        es: {
+            title: "Elegir proceso",
+            basic: "Básico",
+            basicDesc: "Paga primero → se entrega el artículo",
+            basicPrice: "GRATIS",
+            express: "Express",
+            expressDesc: "Se entrega ahora → paga después",
+            expressPrice: "+Rp5.000"
+        }
+
+    };
+
+
+    function translateDelivery() {
+
+        const lang =
+            typeof currentLanguage !== "undefined"
+                ? currentLanguage
+                : "id";
+
+        const t =
+            deliveryTranslations[lang] ||
+            deliveryTranslations.id;
+
+        const title =
+            document.querySelector(
+                "#deliveryChoice .delivery-title"
+            );
+
+        if (title) {
+            title.textContent = t.title;
+        }
+
+
+        const basic =
+            document.querySelector(
+                '#deliveryChoice .delivery-option[data-type="Basic"]'
+            );
+
+        if (basic) {
+
+            const strong =
+                basic.querySelector("strong");
+
+            const small =
+                basic.querySelector("small");
+
+            const price =
+                basic.querySelector("b");
+
+            if (strong) strong.textContent = t.basic;
+            if (small) small.textContent = t.basicDesc;
+            if (price) price.textContent = t.basicPrice;
+        }
+
+
+        const express =
+            document.querySelector(
+                '#deliveryChoice .delivery-option[data-type="Express"]'
+            );
+
+        if (express) {
+
+            const strong =
+                express.querySelector("strong");
+
+            const small =
+                express.querySelector("small");
+
+            const price =
+                express.querySelector("b");
+
+            if (strong) strong.textContent = t.express;
+            if (small) small.textContent = t.expressDesc;
+            if (price) price.textContent = t.expressPrice;
+        }
+
+    }
+
+
+    /*
+       Saat bahasa diganti
+    */
+    if (languageSelect) {
+
+        languageSelect.addEventListener(
+            "change",
+            function () {
+
+                setTimeout(
+                    translateDelivery,
+                    0
+                );
+
+            }
+        );
+
+    }
+
+
+    /*
+       Saat pilihan Basic / Express pertama kali muncul
+    */
+    const originalShowDeliveryChoice =
+        window.showDeliveryChoice;
+
+    translateDelivery();
+
+})();
