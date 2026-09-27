@@ -911,32 +911,32 @@
 
             <select id="robux">
 
-                <option value="9000">
-                    50 Robux - Rp 9,000
+                <option value="11000">
+                    50 Robux - Rp 11,000
                 </option>
 
-                <option value="14000">
-                    80 Robux - Rp 14,000
+                <option value="15500">
+                    80 Robux - Rp 15,500
                 </option>
 
-                <option value="20000">
-                    150 Robux - Rp 20,000
+                <option value="28000">
+                    150 Robux - Rp 28,000
                 </option>
 
-                <option value="53000">
-                    300 Robux - Rp 53,000
+                <option value="52000">
+                    300 Robux - Rp 52,000
                 </option>
 
-                <option value="82000">
-                    500 Robux - Rp 82,000
+                <option value="81000">
+                    500 Robux - Rp 81,000
                 </option>
 
-                <option value="120000">
-                    750 Robux - Rp 120,000
+                <option value="115000">
+                    750 Robux - Rp 115,000
                 </option>
 
-                <option value="165000">
-                    1000 Robux - Rp 165,000
+                <option value="159500">
+                    1000 Robux - Rp 159,500
                 </option>
 
                 <option value="custom">
@@ -979,6 +979,240 @@
             </button>
 
         </section>
+
+
+        <!-- =================================================
+             STEAL AN EGG - ROBLOX
+        ================================================== -->
+
+<section class="game-card">
+
+    <h2>
+        🐣 Steal An Egg - Roblox
+    </h2>
+
+    <label>
+        Pilih Produk
+    </label>
+
+    <select id="stealEgg">
+
+        <option value="45000">
+            x2 Money SAE - Rp 45,000
+        </option>
+
+        <option value="51000">
+            x2 Growth Speed SAE - Rp 51,000
+        </option>
+
+        <option value="14000">
+            Limited Egg SAE - Rp 14,000
+        </option>
+
+        <option value="joki">
+            Joki Speed Steal An Egg - Rp 200 / Jam
+        </option>
+
+    </select>
+
+
+    <!-- JUMLAH JAM JOKI -->
+
+    <div
+        id="jokiBox"
+        style="display:none;"
+    >
+
+        <label>
+            Jumlah Jam Joki
+        </label>
+
+        <div style="
+            display:flex;
+            align-items:center;
+            gap:15px;
+        ">
+
+            <button
+                type="button"
+                id="minusJoki"
+            >
+                −
+            </button>
+
+            <span id="jumlahJoki">
+                1
+            </span>
+
+            <button
+                type="button"
+                id="plusJoki"
+            >
+                +
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <h3 id="hargaStealEgg">
+        Rp 45,000
+    </h3>
+
+
+    <button
+        id="waStealEgg"
+        type="button"
+    >
+        Beli Sekarang via WhatsApp
+    </button>
+
+</section>
+
+
+<script>
+
+const stealEgg = document.getElementById("stealEgg");
+
+const jokiBox = document.getElementById("jokiBox");
+
+const jumlahJoki = document.getElementById("jumlahJoki");
+
+const hargaStealEgg = document.getElementById("hargaStealEgg");
+
+const minusJoki = document.getElementById("minusJoki");
+
+const plusJoki = document.getElementById("plusJoki");
+
+const waStealEgg = document.getElementById("waStealEgg");
+
+let jamJoki = 1;
+
+
+// FORMAT RUPIAH
+function formatRupiah(angka) {
+
+    return "Rp " + angka.toLocaleString("id-ID");
+
+}
+
+
+// UPDATE HARGA
+function updateHarga() {
+
+    if (stealEgg.value === "joki") {
+
+        jokiBox.style.display = "block";
+
+        let total = 200 * jamJoki;
+
+        hargaStealEgg.textContent = formatRupiah(total);
+
+    } else {
+
+        jokiBox.style.display = "none";
+
+        hargaStealEgg.textContent =
+            formatRupiah(Number(stealEgg.value));
+
+    }
+
+}
+
+
+// GANTI PRODUK
+stealEgg.addEventListener("change", function() {
+
+    jamJoki = 1;
+
+    jumlahJoki.textContent = jamJoki;
+
+    updateHarga();
+
+});
+
+
+// TOMBOL PLUS
+plusJoki.addEventListener("click", function() {
+
+    jamJoki++;
+
+    jumlahJoki.textContent = jamJoki;
+
+    updateHarga();
+
+});
+
+
+// TOMBOL MINUS
+minusJoki.addEventListener("click", function() {
+
+    if (jamJoki > 1) {
+
+        jamJoki--;
+
+        jumlahJoki.textContent = jamJoki;
+
+        updateHarga();
+
+    }
+
+});
+
+
+// TOMBOL WHATSAPP
+waStealEgg.addEventListener("click", function() {
+
+    let produk = "";
+
+    let total = 0;
+
+
+    if (stealEgg.value === "joki") {
+
+        produk =
+            "Joki Speed Steal An Egg - " +
+            jamJoki +
+            " Jam";
+
+        total = 200 * jamJoki;
+
+    } else {
+
+        produk =
+            stealEgg.options[stealEgg.selectedIndex].text;
+
+        total = Number(stealEgg.value);
+
+    }
+
+
+    const nomorWA = "6282169942899";
+
+
+    const pesan =
+        "Halo, saya ingin membeli:%0A%0A" +
+        "Game: Steal An Egg - Roblox%0A" +
+        "Produk: " + produk + "%0A" +
+        "Total: " + formatRupiah(total);
+
+
+    window.open(
+        "https://wa.me/" +
+        nomorWA +
+        "?text=" +
+        pesan,
+        "_blank"
+    );
+
+});
+
+
+// JALANKAN SAAT PERTAMA
+updateHarga();
+
+</script>
 
 
         <!-- =================================================
