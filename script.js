@@ -52,9 +52,11 @@ function getElement(id) {
 
 const promoCodes = [
     "RBXSTOREIDN",
+    "OCTOBERBXSTOREIDN",
     "HAPPYHALLOWEEN",
-    "PROMOCODERBXSTOREID",
-    "OCTOBERPROMOCODE"
+    "OCTOBERFEST",
+    "FALLSALE",
+    "SPOOKYDISCOUNT",
 ];
 
 const promoExpiry =
@@ -366,94 +368,109 @@ if (
 // ============================================================
 
 function bukaWhatsApp(pesan) {
-
     if (!pesan) {
         return;
     }
 
-    pendingOrderMessage =
-        pesan;
+    pendingOrderMessage = pesan;
 
-    const pesanFinal =
-        applyDiscountToMessage(
-            pesan
-        );
+    const deliveryMethod = getElement("deliveryMethod");
 
-    pendingWhatsAppURL =
-        createWhatsAppURL(
-            pesanFinal
-        );
-
-    const productMatch =
-        pesanFinal.match(
-            /Produk:\s*(.+)/
-        );
-
-    const orderMatch =
-        pesanFinal.match(
-            /Pesanan:\s*(.+)/
-        );
-
-    const priceMatch =
-        pesanFinal.match(
-            /Harga:\s*(.+)/
-        );
-
-    const game =
-        productMatch
-            ? productMatch[1].trim()
-            : "Custom Order";
-
-    const product =
-        orderMatch
-            ? orderMatch[1].trim()
-            : "Custom Order";
-
-    const price =
-        priceMatch
-            ? priceMatch[1].trim()
-            : "Menunggu Konfirmasi";
-
-    const confirmGame =
-        getElement("confirmGame");
-
-    const confirmProduct =
-        getElement("confirmProduct");
-
-    const confirmPrice =
-        getElement("confirmPrice");
-
-    const orderConfirm =
-        getElement("orderConfirm");
-
-    if (confirmGame) {
-
-        confirmGame.textContent =
-            game;
+    if (deliveryMethod) {
+        deliveryMethod.classList.add("active");
+        document.body.style.overflow = "hidden";
+        return;
     }
 
-    if (confirmProduct) {
+    finalizeWhatsAppOrder("Basic");
+}
 
-        confirmProduct.textContent =
-            product;
+
+// ============================================================
+// DELIVERY METHOD
+// ============================================================
+
+function finalizeWhatsAppOrder(method) {
+    if (!pendingOrderMessage) {
+        return;
     }
 
-    if (confirmPrice) {
+    let pesan = pendingOrderMessage;
 
-        confirmPrice.textContent =
-            price;
+    if (method === "Express") {
+        pesan += "\n\nMetode: Express (+Rp5.000)\nItem diberikan sekarang, pembayaran nanti.";
+
+        const priceMatch = pesan.match(/Harga:\s*Rp\s*([\d.,]+)/);
+        if (priceMatch) {
+            const angka = Number(priceMatch[1].replace(/\./g, "").replace(/,/g, ""));
+            if (!Number.isNaN(angka)) {
+                const hargaBaru = angka + 5000;
+                pesan = pesan.replace(
+                    /Harga:\s*Rp\s*[\d.,]+/,
+                    `Harga: ${formatHarga(hargaBaru)}`
+                );
+            }
+        }
+    } else {
+        pesan += "\n\nMetode: Basic (FREE)\nBayar dulu, lalu item diberikan.";
     }
+
+    const pesanFinal = applyDiscountToMessage(pesan);
+
+    pendingWhatsAppURL = createWhatsAppURL(pesanFinal);
+
+    const productMatch = pesanFinal.match(/Produk:\s*(.+)/);
+    const orderMatch = pesanFinal.match(/Pesanan:\s*(.+)/);
+    const priceMatch = pesanFinal.match(/Harga:\s*(.+)/);
+
+    const game = productMatch ? productMatch[1].trim() : "Custom Order";
+    const product = orderMatch ? orderMatch[1].trim() : "Custom Order";
+    const price = priceMatch ? priceMatch[1].trim() : "Menunggu Konfirmasi";
+
+    const confirmGame = getElement("confirmGame");
+    const confirmProduct = getElement("confirmProduct");
+    const confirmPrice = getElement("confirmPrice");
+    const orderConfirm = getElement("orderConfirm");
+    const delivery = getElement("deliveryMethod");
+
+    if (confirmGame) confirmGame.textContent = game;
+    if (confirmProduct) confirmProduct.textContent = product;
+    if (confirmPrice) confirmPrice.textContent = price;
+
+    if (delivery) delivery.classList.remove("active");
 
     if (orderConfirm) {
-
-        orderConfirm.classList.add(
-            "active"
-        );
-
-        document.body.style.overflow =
-            "hidden";
+        orderConfirm.classList.add("active");
     }
 }
+
+
+const basicDelivery = getElement("basicDelivery");
+const expressDelivery = getElement("expressDelivery");
+const cancelDelivery = getElement("cancelDelivery");
+
+if (basicDelivery) {
+    basicDelivery.addEventListener("click", function () {
+        finalizeWhatsAppOrder("Basic");
+    });
+}
+
+if (expressDelivery) {
+    expressDelivery.addEventListener("click", function () {
+        finalizeWhatsAppOrder("Express");
+    });
+}
+
+if (cancelDelivery) {
+    cancelDelivery.addEventListener("click", function () {
+        const delivery = getElement("deliveryMethod");
+        if (delivery) delivery.classList.remove("active");
+        document.body.style.overflow = "";
+        pendingOrderMessage = "";
+        pendingWhatsAppURL = "";
+    });
+}
+
 
 
 // ============================================================
@@ -757,6 +774,7 @@ setupNormalProduct(
     "Grow A Garden 2 - Roblox"
 );
 
+
 // ============================================================
 // STEAL AN EGG
 // ============================================================
@@ -767,7 +785,6 @@ setupNormalProduct(
     "waSAE",
     "Steal An Egg - Roblox"
 );
-
 
 // ============================================================
 // TOILET TOWER DEFENSE
@@ -3166,12 +3183,12 @@ document.querySelectorAll(
 
         "waRobux",
         "waGarden",
+        "waSAE",
         "waTTD",
         "waML",
         "waForest",
         "waFC",
-        "waFF",
-        "waSAE"
+        "waFF"
 
     ];
 
